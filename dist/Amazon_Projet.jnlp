@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="Amazon_Projet.jnlp">
+  <information>
+    <title>Amazon_Projet</title>
+    <vendor>mathieuridet</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="Amazon_Projet.jar" size="193379" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Amazon_Projet" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="amazon_projet.Amazon_Projet"  name="Amazon_Projet" />
+  <update check="always"/>
+</jnlp>
