@@ -21,7 +21,7 @@ import javafx.scene.text.TextAlignment;
  *
  * @author daekc
  */
-public class Produit extends VBox{
+public class Produit extends VBox {
     
     public Produit(String img, String nomArticle, String p, String description) {
        
@@ -33,9 +33,9 @@ public class Produit extends VBox{
         article.setContentDisplay(ContentDisplay.TOP);
         Label prix = new Label(p);
         Label txt = new Label(description);
-        this.setMargin(txt, new Insets(2,2,2,2)); 
-        this.setMargin(prix, new Insets(2,2,2,2));
-        this.setMargin(article, new Insets(2,2,2,2));
+        VBox.setMargin(txt, new Insets(2,2,2,2)); 
+        VBox.setMargin(prix, new Insets(2,2,2,2));
+        VBox.setMargin(article, new Insets(2,2,2,2));
         
         prix.setFont(new Font("Arial", 25));
         prix.setTextFill(Color.ORANGE);
