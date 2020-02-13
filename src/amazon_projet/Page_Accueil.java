@@ -8,8 +8,7 @@ import javafx.scene.layout.RowConstraints;
 public class Page_Accueil extends GridPane {
 
 	public Page_Accueil() {
-		// Partie à retirer à la fin, c'est juste pour bien distinguer les parties
-		this.setGridLinesVisible(true);
+		// this.setGridLinesVisible(true);
 
 		// -------------------------------------------------------------------------------
 		// On donne les bonnes tailles (en pourcentage) au cases du GridPane
