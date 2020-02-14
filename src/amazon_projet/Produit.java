@@ -16,7 +16,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.TextAlignment;
-import javax.swing.text.html.CSS;
 
 /**
  *
@@ -24,7 +23,7 @@ import javax.swing.text.html.CSS;
  */
 public class Produit extends VBox {
     
-    public Produit(String img, String nomArticle, String p, String description, String background_color) {
+    public Produit(String img, String nomArticle, String p, String description) {
        
         Label article = new Label(nomArticle);
         ImageView imView = new ImageView(new Image(this.getClass().getResourceAsStream(img)));
@@ -49,7 +48,7 @@ public class Produit extends VBox {
         this.setAlignment(Pos.CENTER);
         this.setPadding(new Insets(8,8,8,8));
         this.setAlignment(Pos.CENTER);
-        this.setStyle("-fx-background-color: "+background_color+";");
+        // this.setStyle("-fx-background-color: "+background_color+";");
         this.getChildren().add(article);
         this.getChildren().add(prix);
         this.getChildren().add(txt);
