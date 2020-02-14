@@ -25,7 +25,7 @@ public class Contenu extends VBox {
 
 	public Contenu() {
 		this.setAlignment(Pos.TOP_CENTER);
-		this.setPadding(new Insets(20, 10, 10, 10));
+		this.setPadding(new Insets(10));
 
 		// -------------------------------------------------------------------------------
 		// Pub
@@ -40,7 +40,7 @@ public class Contenu extends VBox {
 		// -------------------------------------------------------------------------------
 		// Barre de recherche centrale
 		HBox barre_du_milieu = new HBox(5);
-		barre_du_milieu.setPadding(new Insets(5, 0, 5, 0));
+		barre_du_milieu.setPadding(new Insets(10, 0, 10, 0));
 
 		MenuButton toutes_nos_categories = new MenuButton("Toutes nos catégories");
 		toutes_nos_categories.setMaxHeight(Double.MAX_VALUE);
@@ -58,39 +58,35 @@ public class Contenu extends VBox {
 		barre_du_milieu.getChildren().addAll(toutes_nos_categories, recherche_textuelle, loupe);
 
 		// -------------------------------------------------------------------------------
-		// Partie produits
-		GridPane conteneur_produits = new GridPane();
-		conteneur_produits.setHgap(10);
-		conteneur_produits.setVgap(10);
-		// conteneur_produits.setGridLinesVisible(true);
-		for (int i = 0; i < 8; i++) {
-			ColumnConstraints rowi = new ColumnConstraints();
-			rowi.setPercentWidth(12.5);
-			conteneur_produits.getColumnConstraints().add(rowi);
-		}
-
-		int n = 1;
-		for (int i = 0; i < 7; i++) {
-			for (int j = 0; j < 8; j++) {
-				Produit produitn = new Produit("img/img_product1.png", "Article " + n, "19.99€",
-						"Description article " + n);
-				conteneur_produits.add(produitn, j, i);
-				n++;
-			}
-		}
-
-		HBox.setHgrow(conteneur_produits, Priority.ALWAYS);
-		
-		// Pour lister et scroll les produits
-		ScrollPane scrollable = new ScrollPane();
-		scrollable.setContent(conteneur_produits);
-		scrollable.setVbarPolicy(ScrollBarPolicy.AS_NEEDED);
-		scrollable.setFitToHeight(true);
-		scrollable.setFitToWidth(true);
+		// On attache tous les composants au contenant principal
+		this.getChildren().addAll(box_pub, barre_du_milieu);
+		Contenu.setMargin(barre_du_milieu, new Insets(20, 0, 0, 0));
 
 		// -------------------------------------------------------------------------------
-		// On attache tous les composants au contenant principal
-		this.getChildren().addAll(box_pub, barre_du_milieu, scrollable);
-		Contenu.setMargin(barre_du_milieu, new Insets(10, 0, 10, 0));
+		// Partie produits
+		int n = 1;
+		for (int i = 0; i < 2; i++) {
+			GridPane productListi = new GridPane();
+			productListi.setHgap(20);
+			productListi.setPadding(new Insets(40));
+			// productListi.setGridLinesVisible(true);
+			for (int j = 0; j < 18; j++) {
+				productListi.getColumnConstraints().add(new ColumnConstraints(200));
+				Produit produitn = new Produit("img/img_product1.png", "Article " + n, "19.99€",
+						"Description article " + n);
+				productListi.add(produitn, j, i);
+				n++;
+			}
+			HBox.setHgrow(productListi, Priority.ALWAYS);
+			// Pour lister et scroll les produits
+			ScrollPane scrollablei = new ScrollPane();
+			scrollablei.setContent(productListi);
+			scrollablei.setVbarPolicy(ScrollBarPolicy.NEVER);
+			scrollablei.setHbarPolicy(ScrollBarPolicy.AS_NEEDED);
+			scrollablei.setFitToHeight(true);
+			scrollablei.setFitToWidth(true);
+			this.getChildren().add(scrollablei);
+			Contenu.setMargin(scrollablei, new Insets(10, 0, 10, 0));
+		}
 	}
 }
