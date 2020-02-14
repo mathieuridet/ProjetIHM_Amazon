@@ -1,4 +1,4 @@
-package amazon_projet;
+package amazon_projet.accueil;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;

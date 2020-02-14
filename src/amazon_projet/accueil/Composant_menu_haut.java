@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package amazon_projet;
+package amazon_projet.accueil;
 
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
@@ -19,7 +19,7 @@ import javafx.scene.text.Font;
  *
  * @author mathieuridet
  */
-public class Composant_menu_haut extends Label{
+public class Composant_menu_haut extends Label {
     
     public Composant_menu_haut(String nom, String chemin_img, ContentDisplay contentdisplay, HPos horizontal_position) {
         Image img = new Image(this.getClass().getResourceAsStream(chemin_img));

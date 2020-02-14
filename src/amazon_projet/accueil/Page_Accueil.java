@@ -1,4 +1,4 @@
-package amazon_projet;
+package amazon_projet.accueil;
 
 import javafx.geometry.HPos;
 import javafx.scene.layout.ColumnConstraints;
