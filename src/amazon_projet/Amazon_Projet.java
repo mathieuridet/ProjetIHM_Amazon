@@ -8,6 +8,7 @@ package amazon_projet;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import amazon_projet.accueil.Page_Accueil;
 
 public class Amazon_Projet extends Application {
 
