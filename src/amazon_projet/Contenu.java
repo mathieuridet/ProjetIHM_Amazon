@@ -73,7 +73,7 @@ public class Contenu extends VBox {
 			for (int j = 0; j < 18; j++) {
 				productListi.getColumnConstraints().add(new ColumnConstraints(200));
 				Produit produitn = new Produit("img/img_product1.png", "Article " + n, "19.99€",
-						"Description article " + n, "#FFFFFF");
+						"Description article " + n);
 				productListi.add(produitn, j, i);
 				n++;
 			}
