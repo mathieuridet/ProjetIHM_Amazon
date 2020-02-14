@@ -73,7 +73,7 @@ public class Contenu extends VBox {
 		for (int i = 0; i < 7; i++) {
 			for (int j = 0; j < 8; j++) {
 				Produit produitn = new Produit("img/img_product1.png", "Article " + n, "19.99€",
-						"Description article " + n);
+						"Description article " + n, "#FFFFFF");
 				conteneur_produits.add(produitn, j, i);
 				n++;
 			}
