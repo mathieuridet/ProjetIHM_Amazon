@@ -29,7 +29,7 @@ public class Contenu extends VBox {
 
 		// -------------------------------------------------------------------------------
 		// Pub
-		Image img_pub = new Image(this.getClass().getResourceAsStream("../img/img_pub.png"));
+		Image img_pub = new Image(this.getClass().getResourceAsStream("img/img_pub.png"));
 		ImageView imgview_pub = new ImageView(img_pub);
 
 		HBox box_pub = new HBox();
@@ -49,7 +49,7 @@ public class Contenu extends VBox {
 		TextField recherche_textuelle = new TextField();
 		recherche_textuelle.setMaxHeight(Double.MAX_VALUE);
 
-		Button loupe = new Button("", new ImageView(new Image(getClass().getResourceAsStream("../img/img_loupe.png"))));
+		Button loupe = new Button("", new ImageView(new Image(getClass().getResourceAsStream("img/img_loupe.png"))));
 		loupe.setBackground(new Background(new BackgroundFill(Color.CORAL, new CornerRadii(5), Insets.EMPTY)));
 		loupe.setPadding(new Insets(5, 25, 5, 25));
 
@@ -72,7 +72,7 @@ public class Contenu extends VBox {
 			// productListi.setGridLinesVisible(true);
 			for (int j = 0; j < 18; j++) {
 				productListi.getColumnConstraints().add(new ColumnConstraints(200));
-				Produit produitn = new Produit("../img/img_product1.png", "Article " + n, "19.99€",
+				Produit produitn = new Produit("img/img_product1.png", "Article " + n, "19.99€",
 						"Description article " + n);
 				productListi.add(produitn, j, i);
 				n++;

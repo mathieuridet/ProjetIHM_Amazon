@@ -31,11 +31,11 @@ public class Barre_menu_gauche extends BorderPane {
 		// menu_haut.setTranslateX(menu_gauche.getWidth());
 
 		// Creation des articles
-		Produit produit1 = new Produit("../img/img_product1.png", "Article 1", "19.99€", "Description article 1");
-		Produit produit2 = new Produit("../img/img_product2.png", "Article 2", "39.99€", "Description article 2");
-		Produit produit3 = new Produit("../img/img_product3.png", "Article 3", "99.99€", "Description article 3");
-		Produit produit4 = new Produit("../img/img_product1.png", "Article 4", "159.99€", "Description article 4");
-		Produit produit5 = new Produit("../img/img_product2.png", "Article 5", "209.99€", "Description article 5");
+		Produit produit1 = new Produit("img/img_product1.png", "Article 1", "19.99€", "Description article 1");
+		Produit produit2 = new Produit("img/img_product2.png", "Article 2", "39.99€", "Description article 2");
+		Produit produit3 = new Produit("img/img_product3.png", "Article 3", "99.99€", "Description article 3");
+		Produit produit4 = new Produit("img/img_product1.png", "Article 4", "159.99€", "Description article 4");
+		Produit produit5 = new Produit("img/img_product2.png", "Article 5", "209.99€", "Description article 5");
 
 		// Liste d'articles (dans le menu de gauche)
 		ObservableList<VBox> commandeList = FXCollections.<VBox>observableArrayList(produit1, produit2, produit3,
@@ -57,7 +57,7 @@ public class Barre_menu_gauche extends BorderPane {
 		datelivraison_commande.setPadding(new Insets(10));
 
 		// Icône en bas du menu de gauche
-		Image img_icone = new Image(this.getClass().getResourceAsStream("../img/img_icone.png"));
+		Image img_icone = new Image(this.getClass().getResourceAsStream("img/img_icone.png"));
 		ImageView imgview_icone = new ImageView(img_icone);
 		imgview_icone.setFitHeight(75);
 		imgview_icone.setFitWidth(75);
