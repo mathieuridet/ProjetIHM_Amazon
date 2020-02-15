@@ -60,7 +60,7 @@ public class Contenu extends VBox {
 		// -------------------------------------------------------------------------------
 		// On attache tous les composants au contenant principal
 		this.getChildren().addAll(box_pub, barre_du_milieu);
-		Contenu.setMargin(barre_du_milieu, new Insets(20, 0, 0, 0));
+		Contenu.setMargin(barre_du_milieu, new Insets(15, 0, 0, 0));
 
 		// -------------------------------------------------------------------------------
 		// Partie produits
@@ -83,10 +83,8 @@ public class Contenu extends VBox {
 			scrollablei.setContent(productListi);
 			scrollablei.setVbarPolicy(ScrollBarPolicy.NEVER);
 			scrollablei.setHbarPolicy(ScrollBarPolicy.AS_NEEDED);
-			scrollablei.setFitToHeight(true);
-			scrollablei.setFitToWidth(true);
 			this.getChildren().add(scrollablei);
-			Contenu.setMargin(scrollablei, new Insets(10, 0, 10, 0));
+			Contenu.setMargin(scrollablei, new Insets(15, 0, 0, 0));
 		}
 	}
 }
