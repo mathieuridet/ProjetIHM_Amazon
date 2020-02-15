@@ -17,14 +17,14 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 public class Barre_menu_gauche extends BorderPane {
 
+	private boolean infos_panier_visible = false;
+	
 	public Barre_menu_gauche() {
 		// menu_gauche.maxHeight(scene.getHeight());
 		// menu_gauche.minHeight(scene.getHeight());
@@ -78,37 +78,37 @@ public class Barre_menu_gauche extends BorderPane {
 		commande.setBottom(prixEtDate);
 
 		// partie pour afficher et cacher la partie basse
-		Button cacher = new Button("Moins ( - )");
-		cacher.setAlignment(Pos.CENTER);
-		cacher.setMaxWidth(Double.MAX_VALUE);
-		cacher.setOnMousePressed(new EventHandler<MouseEvent>() {
+		Button infosPanier = new Button("Infos supplémentaires");
+		infosPanier.setAlignment(Pos.CENTER);
+		infosPanier.setMaxWidth(Double.MAX_VALUE);
+		infosPanier.setOnMousePressed(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent me) {
-				prixEtDate.setVisible(false);
-				prixEtDate.setManaged(false);
+				if (isInfos_panier_visible()) {
+					setInfos_panier_visible(false);
+					prixEtDate.setVisible(false);
+					prixEtDate.setManaged(false);
+				} else {
+					setInfos_panier_visible(true);
+					prixEtDate.setVisible(true);
+					prixEtDate.setManaged(true);
+				}
 			}
 		});
-
-		Button voir = new Button("Plus ( + )");
-		voir.setAlignment(Pos.CENTER);
-		voir.setMaxWidth(Double.MAX_VALUE);
-		voir.setOnMousePressed(new EventHandler<MouseEvent>() {
-			public void handle(MouseEvent me) {
-				prixEtDate.setVisible(true);
-				prixEtDate.setManaged(true);
-			}
-		});
-
-		HBox boutons_bas = new HBox();
-		boutons_bas.getChildren().addAll(cacher, voir);
-		HBox.setHgrow(cacher, Priority.ALWAYS);
-		HBox.setHgrow(voir, Priority.ALWAYS);
 
 		// On attache la commande au centre du menu de gauche
 		this.setCenter(commande);
-		this.setBottom(boutons_bas);
+		this.setBottom(infosPanier);
 		// On attache l'icone en bas du menu
 		// this.setBottom(imgview_icone);
 		this.setStyle("-fx-background-color: #183152;");
 		BorderPane.setAlignment(imgview_icone, Pos.CENTER);
+	}
+
+	public boolean isInfos_panier_visible() {
+		return infos_panier_visible;
+	}
+
+	public void setInfos_panier_visible(boolean infos_panier_visible) {
+		this.infos_panier_visible = infos_panier_visible;
 	}
 }

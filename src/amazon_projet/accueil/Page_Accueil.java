@@ -1,11 +1,16 @@
 package amazon_projet.accueil;
 
+import javafx.event.EventHandler;
 import javafx.geometry.HPos;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.RowConstraints;
 
 public class Page_Accueil extends GridPane {
+	
+	private boolean menu_droite_visible = false;
 
 	public Page_Accueil() {
 		// this.setGridLinesVisible(true);
@@ -32,9 +37,8 @@ public class Page_Accueil extends GridPane {
 		// Partie relative au coin en haut à gauche
 		// -------------------------------------------------------------------------------
 
-		Coin_haut_gauche titre_menu_gauche = new Coin_haut_gauche();
-		// On centre le titre "Vos Commandes" qui ira en haut du menu
-		GridPane.setHalignment(titre_menu_gauche, HPos.CENTER);
+		Coin_haut_gauche coin_panier = new Coin_haut_gauche();
+		GridPane.setHalignment(coin_panier, HPos.CENTER);
 
 		// -------------------------------------------------------------------------------
 		// Partie relative au menu en haut (et à droite)
@@ -49,18 +53,50 @@ public class Page_Accueil extends GridPane {
 		Barre_menu_gauche menu_gauche = new Barre_menu_gauche();
 
 		// -------------------------------------------------------------------------------
-		// Partie relative au contenu central
+		// Partie relative au centre de la page
 		// -------------------------------------------------------------------------------
 
 		Contenu contenu_central = new Contenu();
 
+		// Partie menu de droite
+		Menu_droit test = new Menu_droit();
+		test.setVisible(false);
+		test.setManaged(false);
+		
+		// Contenant des 2 éléments précédents
+		HBox contenant_central = new HBox();
+		contenant_central.getChildren().addAll(contenu_central, test);
+		
+		// Event pour faire apparaître et disparaître le menu de droite
+		menu_haut.getMenu_deroulant_droite().setOnMousePressed(new EventHandler<MouseEvent>() {
+			public void handle(MouseEvent me) {
+				if (isMenu_droite_visible()) {
+					setMenu_droite_visible(false);
+					test.setVisible(false);
+					test.setManaged(false);
+				} else {
+					setMenu_droite_visible(true);
+					test.setVisible(true);
+					test.setManaged(true);
+				}
+			}
+		});
+		
 		// -------------------------------------------------------------------------------
 		// On ajoute les éléments dans les bonnes cases du GridPane
 		// -------------------------------------------------------------------------------
 
-		this.add(titre_menu_gauche, 0, 0);
+		this.add(coin_panier, 0, 0);
 		this.add(menu_haut, 1, 0);
 		this.add(menu_gauche, 0, 1);
-		this.add(contenu_central, 1, 1);
+		this.add(contenant_central, 1, 1);
+	}
+
+	public boolean isMenu_droite_visible() {
+		return menu_droite_visible;
+	}
+
+	public void setMenu_droite_visible(boolean menu_droite_visible) {
+		this.menu_droite_visible = menu_droite_visible;
 	}
 }

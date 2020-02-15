@@ -11,6 +11,9 @@ import javafx.scene.layout.RowConstraints;
 
 public class Barre_menu_haut extends GridPane {
 
+	private Composant_menu_haut menu_deroulant_droite = new Composant_menu_haut("   ", "img/img_menuderoulantdroite.png",
+			ContentDisplay.LEFT, HPos.RIGHT);;
+	
 	public Barre_menu_haut() {
 		// -------------------------------------------------------------------------------
 		// On donne les bonnes tailles (en pourcentage) au cases du GridPane
@@ -25,9 +28,9 @@ public class Barre_menu_haut extends GridPane {
 		ColumnConstraints column1 = new ColumnConstraints();
 		column1.setPercentWidth(20);
 		ColumnConstraints column2 = new ColumnConstraints();
-		column2.setPercentWidth(40);
+		column2.setPercentWidth(50);
 		ColumnConstraints column3 = new ColumnConstraints();
-		column3.setPercentWidth(30);
+		column3.setPercentWidth(20);
 		ColumnConstraints column4 = new ColumnConstraints();
 		column4.setPercentWidth(10);
 //		ColumnConstraints column5 = new ColumnConstraints();
@@ -52,16 +55,13 @@ public class Barre_menu_haut extends GridPane {
 		Composant_menu_haut ventes_speciales = new Composant_menu_haut("Ventes spéciales",
 				"img/img_ventesspeciales.png", ContentDisplay.RIGHT, HPos.CENTER);
 
-		Composant_menu_haut menu_deroulant_droite = new Composant_menu_haut("   ", "img/img_menuderoulantdroite.png",
-				ContentDisplay.LEFT, HPos.RIGHT);
-
 		// On attache tous les composants au conteneur du haut
 		// this.getChildren().addAll(mon_compte, panier, img_logo);
 		this.add(mon_compte, 0, 0);
 //		this.add(panier, 1, 0);
 		this.add(img_logo, 1, 0);
 		this.add(ventes_speciales, 2, 0);
-		this.add(menu_deroulant_droite, 3, 0);
+		this.add(this.menu_deroulant_droite, 3, 0);
 		// this.setGridLinesVisible(true);
 
 		// this.setMaxHeight(Double.MAX_VALUE);
@@ -69,4 +69,10 @@ public class Barre_menu_haut extends GridPane {
 		this.setStyle("-fx-background-color: #183152;");
 
 	}
+
+	public Composant_menu_haut getMenu_deroulant_droite() {
+		return menu_deroulant_droite;
+	}
+	
+	
 }
