@@ -11,6 +11,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
@@ -83,6 +86,7 @@ public class Contenu extends VBox {
 			scrollablei.setContent(productListi);
 			scrollablei.setVbarPolicy(ScrollBarPolicy.NEVER);
 			scrollablei.setHbarPolicy(ScrollBarPolicy.AS_NEEDED);
+			scrollablei.setBackground(new Background(new BackgroundFill(null, new CornerRadii(10), Insets.EMPTY)));
 			this.getChildren().add(scrollablei);
 			Contenu.setMargin(scrollablei, new Insets(15, 0, 0, 0));
 		}
