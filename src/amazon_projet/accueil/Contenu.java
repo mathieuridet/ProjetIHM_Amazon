@@ -11,9 +11,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderStroke;
-import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
@@ -61,7 +58,7 @@ public class Contenu extends VBox {
 		barre_du_milieu.getChildren().addAll(toutes_nos_categories, recherche_textuelle, loupe);
 
 		// -------------------------------------------------------------------------------
-		// On attache tous les composants au contenant principal
+		// On attache la pub et la barre de recherche au contenant principal
 		this.getChildren().addAll(box_pub, barre_du_milieu);
 		Contenu.setMargin(barre_du_milieu, new Insets(15, 0, 0, 0));
 
