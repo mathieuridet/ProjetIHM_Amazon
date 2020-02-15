@@ -21,8 +21,8 @@ public class Amazon_Projet extends Application {
 
 		primaryStage.setTitle("Amazon");
 		primaryStage.setScene(scene);
-		primaryStage.setHeight(1000);
-		primaryStage.setWidth(1500);
+		primaryStage.setHeight(1250);
+		primaryStage.setWidth(1750);
 		// primaryStage.setFullScreen(true);
 		// primaryStage.initStyle(StageStyle.DECORATED);		
 		primaryStage.show();

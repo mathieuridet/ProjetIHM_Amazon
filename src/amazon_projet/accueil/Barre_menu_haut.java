@@ -36,13 +36,13 @@ public class Barre_menu_haut extends GridPane {
 
 		// On crée nos différents composants du menu
 
-		Composant_menu_haut mon_compte = new Composant_menu_haut("Mon Compte", "../img/img_moncompte.png",
+		Composant_menu_haut mon_compte = new Composant_menu_haut("Mon Compte", "img/img_moncompte.png",
 				ContentDisplay.LEFT, HPos.CENTER);
 
 //		Composant_menu_haut panier = new Composant_menu_haut("Mon Panier", "../img/img_panier.png", ContentDisplay.LEFT, HPos.CENTER);
 
 		ImageView img_logo = new ImageView(
-				new Image(this.getClass().getResourceAsStream("../img/img_logo_amazon.png")));
+				new Image(this.getClass().getResourceAsStream("img/img_logo_amazon.png")));
 
 		img_logo.setFitHeight(50);
 		img_logo.setFitWidth(150);
@@ -50,15 +50,11 @@ public class Barre_menu_haut extends GridPane {
 		GridPane.setHalignment(img_logo, HPos.CENTER);
 
 		Composant_menu_haut ventes_speciales = new Composant_menu_haut("Ventes spéciales",
-				"../img/img_ventesspeciales.png", ContentDisplay.RIGHT, HPos.CENTER);
+				"img/img_ventesspeciales.png", ContentDisplay.RIGHT, HPos.CENTER);
 
-		Composant_menu_haut menu_deroulant_droite = new Composant_menu_haut("   ", "../img/img_menuderoulantdroite.png",
+		Composant_menu_haut menu_deroulant_droite = new Composant_menu_haut("   ", "img/img_menuderoulantdroite.png",
 				ContentDisplay.LEFT, HPos.RIGHT);
 
-                Composant_menu_haut ventes_speciales = new Composant_menu_haut("Ventes spéciales", "img/img_ventesspeciales.png", ContentDisplay.RIGHT, HPos.CENTER);
-                
-                Composant_menu_haut menu_deroulant_droite = new Composant_menu_haut("   ", "img/img_menuderoulantdroite.png", ContentDisplay.LEFT, HPos.RIGHT);
-                
 		// On attache tous les composants au conteneur du haut
 		// this.getChildren().addAll(mon_compte, panier, img_logo);
 		this.add(mon_compte, 0, 0);
