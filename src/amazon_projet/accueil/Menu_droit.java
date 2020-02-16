@@ -35,7 +35,7 @@ class Menu_droit extends GridPane {
 		this.getColumnConstraints().addAll(column1, column2);
 
 		for (int i = 0; i < cats.length; i++) {
-			ImageView imageview = new ImageView(new Image(this.getClass().getResourceAsStream("img/img_loupe.png")));
+			ImageView imageview = new ImageView(new Image(this.getClass().getResourceAsStream("img/img_leftArrow.png")));
 			imageview.setFitHeight(20);
 			imageview.setFitWidth(20);
 			Text txt = new Text(cats[i]);
