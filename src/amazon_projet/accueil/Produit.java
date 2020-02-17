@@ -22,36 +22,55 @@ import javafx.scene.text.TextAlignment;
  * @author daekc
  */
 public class Produit extends VBox {
-    
-    public Produit(String img, String nomArticle, String p, String description) {
-       
-        Label article = new Label(nomArticle);
-        ImageView imView = new ImageView(new Image(this.getClass().getResourceAsStream(img)));
-        imView.setFitHeight(80);
-        imView.setFitWidth(80);
-        article.setGraphic(imView);
-        article.setContentDisplay(ContentDisplay.TOP);
-        Label prix = new Label(p);
-        Label txt = new Label(description);
-        VBox.setMargin(txt, new Insets(2,2,2,2)); 
-        VBox.setMargin(prix, new Insets(2,2,2,2));
-        VBox.setMargin(article, new Insets(2,2,2,2));
-        
-        prix.setFont(new Font("Arial", 25));
-        prix.setTextFill(Color.ORANGE);
-        article.setFont(Font.font("Arial", 20));
-        txt.setFont(Font.font("Arial", FontPosture.ITALIC, 10));
-        txt.setWrapText(true);
-        txt.setMaxWidth(100);
-        txt.setTextAlignment(TextAlignment.CENTER);
 
-        this.setAlignment(Pos.CENTER);
-        this.setPadding(new Insets(8,8,8,8));
-        this.setAlignment(Pos.CENTER);
-        // this.setStyle("-fx-background-color: "+background_color+";");
-        this.getChildren().add(article);
-        this.getChildren().add(prix);
-        this.getChildren().add(txt);
-    }
+	private Label article;
+	private ImageView imView;
+	private Label prix;
+	private Label description;
 
+	public Produit(String img, String nomArticle, String price, String txt) {
+
+		this.article = new Label(nomArticle);
+		this.imView = new ImageView(new Image(this.getClass().getResourceAsStream(img)));
+		this.imView.setFitHeight(80);
+		this.imView.setFitWidth(80);
+		this.article.setGraphic(imView);
+		this.article.setContentDisplay(ContentDisplay.TOP);
+		this.prix = new Label(price);
+		this.description = new Label(txt);
+		VBox.setMargin(this.description, new Insets(2, 2, 2, 2));
+		VBox.setMargin(this.prix, new Insets(2, 2, 2, 2));
+		VBox.setMargin(this.article, new Insets(2, 2, 2, 2));
+
+		this.prix.setFont(new Font("Arial", 25));
+		this.prix.setTextFill(Color.ORANGE);
+		this.article.setFont(Font.font("Arial", 20));
+		this.description.setFont(Font.font("Arial", FontPosture.ITALIC, 10));
+		this.description.setWrapText(true);
+		this.description.setMaxWidth(100);
+		this.description.setTextAlignment(TextAlignment.CENTER);
+
+		this.setAlignment(Pos.CENTER);
+		this.setPadding(new Insets(8, 8, 8, 8));
+		this.setAlignment(Pos.CENTER);
+		this.getChildren().add(article);
+		this.getChildren().add(prix);
+		this.getChildren().add(this.description);
+	}
+
+	public Label getArticle() {
+		return article;
+	}
+
+	public ImageView getImView() {
+		return imView;
+	}
+
+	public Label getPrix() {
+		return prix;
+	}
+
+	public Label getDescription() {
+		return description;
+	}
 }
