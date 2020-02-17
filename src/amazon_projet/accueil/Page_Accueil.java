@@ -34,7 +34,7 @@ public class Page_Accueil extends GridPane {
 		this.getColumnConstraints().addAll(column1, column2);
 
 		// -------------------------------------------------------------------------------
-		// Partie relative au coin en haut à gauche
+		// Partie relative au coin en haut (à gauche)
 		// -------------------------------------------------------------------------------
 
 		Coin_haut_gauche coin_panier = new Coin_haut_gauche();
@@ -59,25 +59,25 @@ public class Page_Accueil extends GridPane {
 		Contenu contenu_central = new Contenu();
 
 		// Partie menu de droite
-		Menu_droit test = new Menu_droit();
-		test.setVisible(false);
-		test.setManaged(false);
+		Menu_droit menu_droit = new Menu_droit();
+		menu_droit.setVisible(false);
+		menu_droit.setManaged(false);
 		
 		// Contenant des 2 éléments précédents
 		HBox contenant_central = new HBox();
-		contenant_central.getChildren().addAll(contenu_central, test);
+		contenant_central.getChildren().addAll(contenu_central, menu_droit);
 		
 		// Event pour faire apparaître et disparaître le menu de droite
 		menu_haut.getMenu_deroulant_droite().setOnMousePressed(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent me) {
 				if (isMenu_droite_visible()) {
 					setMenu_droite_visible(false);
-					test.setVisible(false);
-					test.setManaged(false);
+					menu_droit.setVisible(false);
+					menu_droit.setManaged(false);
 				} else {
 					setMenu_droite_visible(true);
-					test.setVisible(true);
-					test.setManaged(true);
+					menu_droit.setVisible(true);
+					menu_droit.setManaged(true);
 				}
 			}
 		});

@@ -24,12 +24,12 @@ public class Composant_menu_haut extends Label {
     public Composant_menu_haut(String nom, String chemin_img, ContentDisplay contentdisplay, HPos horizontal_position) {
         Image img = new Image(this.getClass().getResourceAsStream(chemin_img));
         ImageView imageview = new ImageView(img);
-        imageview.setFitHeight(50);
-        imageview.setFitWidth(50);
+        imageview.setFitHeight(30);
+        imageview.setFitWidth(30);
         this.setText(nom);
         this.setGraphic(imageview);
         this.setContentDisplay(contentdisplay);
-        this.setFont(Font.font("Arial", 30));
+        this.setFont(Font.font("Arial", 25));
         this.setTextFill(Color.WHITE);
         
         // On centre les différents composants dans leur espace disponible dans la barre

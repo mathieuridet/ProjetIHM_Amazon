@@ -16,6 +16,7 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -64,17 +65,21 @@ public class Contenu extends VBox {
 
 		// -------------------------------------------------------------------------------
 		// Partie produits
+		RowConstraints colonne = new RowConstraints();
+		colonne.setPrefHeight(100);
+		colonne.setVgrow(Priority.ALWAYS);
 		int n = 1;
 		for (int i = 0; i < 2; i++) {
 			GridPane productListi = new GridPane();
+			productListi.getRowConstraints().add(colonne);
 			productListi.setHgap(20);
-			productListi.setPadding(new Insets(40));
+			productListi.setPadding(new Insets(20));
 			// productListi.setGridLinesVisible(true);
 			for (int j = 0; j < 18; j++) {
 				productListi.getColumnConstraints().add(new ColumnConstraints(200));
 				Produit produitn = new Produit("img/img_product1.png", "Article " + n, "19.99€",
 						"Description article " + n);
-				productListi.add(produitn, j, i);
+				productListi.add(produitn, j, 0);
 				n++;
 			}
 			HBox.setHgrow(productListi, Priority.ALWAYS);
@@ -86,6 +91,7 @@ public class Contenu extends VBox {
 			scrollablei.setBackground(new Background(new BackgroundFill(null, new CornerRadii(10), Insets.EMPTY)));
 			this.getChildren().add(scrollablei);
 			Contenu.setMargin(scrollablei, new Insets(15, 0, 0, 0));
+			VBox.setVgrow(scrollablei, Priority.ALWAYS);
 		}
 	}
 }

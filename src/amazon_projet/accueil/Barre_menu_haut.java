@@ -26,20 +26,20 @@ public class Barre_menu_haut extends GridPane {
 
 		// La somme des largeurs des 2 colonnes de la page fait 100%
 		ColumnConstraints column1 = new ColumnConstraints();
-		column1.setPercentWidth(20);
+		column1.setPercentWidth(15);
 		ColumnConstraints column2 = new ColumnConstraints();
-		column2.setPercentWidth(50);
+		column2.setPercentWidth(55);
 		ColumnConstraints column3 = new ColumnConstraints();
-		column3.setPercentWidth(20);
+		column3.setPercentWidth(25);
 		ColumnConstraints column4 = new ColumnConstraints();
-		column4.setPercentWidth(10);
+		column4.setPercentWidth(5);
 //		ColumnConstraints column5 = new ColumnConstraints();
 //		column5.setPercentWidth(20);
 		this.getColumnConstraints().addAll(column1, column2, column3, column4);
 
 		// On crée nos différents composants du menu
 
-		Composant_menu_haut mon_compte = new Composant_menu_haut("Mon Compte", "img/img_moncompte.png",
+		Composant_menu_haut mon_compte = new Composant_menu_haut(" Mon Compte", "img/img_moncompte.png",
 				ContentDisplay.LEFT, HPos.CENTER);
 
 //		Composant_menu_haut panier = new Composant_menu_haut("Mon Panier", "../img/img_panier.png", ContentDisplay.LEFT, HPos.CENTER);
@@ -47,12 +47,12 @@ public class Barre_menu_haut extends GridPane {
 		ImageView img_logo = new ImageView(
 				new Image(this.getClass().getResourceAsStream("img/img_logo_amazon.png")));
 
-		img_logo.setFitHeight(50);
-		img_logo.setFitWidth(150);
+		img_logo.setFitHeight(45);
+		img_logo.setFitWidth(135);
 		GridPane.setValignment(img_logo, VPos.CENTER);
 		GridPane.setHalignment(img_logo, HPos.CENTER);
 
-		Composant_menu_haut ventes_speciales = new Composant_menu_haut("Ventes spéciales",
+		Composant_menu_haut ventes_speciales = new Composant_menu_haut("Ventes spéciales ",
 				"img/img_ventesspeciales.png", ContentDisplay.RIGHT, HPos.CENTER);
 
 		// On attache tous les composants au conteneur du haut
