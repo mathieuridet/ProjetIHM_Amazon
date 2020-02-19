@@ -16,6 +16,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 /**
@@ -27,9 +28,7 @@ public class Menu_droit extends GridPane {
 	private boolean menu_droite_visible = false;
 
 	public Menu_droit(Barre_menu_haut topMenu) {
-		String[] cats = { "Amazon Prime", "Amazon Fire TV", "Ebook et Kindle", "Amazon Music" };
-
-		// this.setGridLinesVisible(true);
+		String[] cats = { "Amazon Prime Video", "Amazon Fire TV", "Ebook et Kindle", "Amazon Music" };
 
 		// La somme des largeurs des 2 colonnes de la page fait 100%
 		ColumnConstraints column1 = new ColumnConstraints();
@@ -44,15 +43,20 @@ public class Menu_droit extends GridPane {
 			imageview.setFitHeight(20);
 			imageview.setFitWidth(20);
 			Text txt = new Text(cats[i]);
-			txt.setWrappingWidth(190);
+			txt.setFont(Font.font("Arial", 16));
+			txt.setWrappingWidth(200);
 			GridPane.setMargin(txt, new Insets(8));
 			GridPane.setMargin(imageview, new Insets(8));
 			this.add(txt, 0, i);
 			this.add(imageview, 1, i);
 		}
+
 		this.setBackground(
 				new Background(new BackgroundFill(Color.WHITE, new CornerRadii(0, 0, 0, 30, false), Insets.EMPTY)));
-
+		this.setPadding(new Insets(20, 0, 0, 0));
+		this.setVgap(10);
+		// this.setGridLinesVisible(true);
+		
 		// Event pour faire apparaître et disparaître le menu de droite
 		topMenu.getTirets_droite().setOnMousePressed(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent me) {

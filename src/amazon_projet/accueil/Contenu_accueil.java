@@ -4,19 +4,14 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
-import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -65,33 +60,13 @@ public class Contenu_accueil extends VBox {
 
 		// -------------------------------------------------------------------------------
 		// Partie produits
-		RowConstraints colonne = new RowConstraints();
-		colonne.setPrefHeight(100);
-		colonne.setVgrow(Priority.ALWAYS);
-		int n = 1;
-		for (int i = 0; i < 2; i++) {
-			GridPane productListi = new GridPane();
-			productListi.getRowConstraints().add(colonne);
-			productListi.setHgap(20);
-			productListi.setPadding(new Insets(20));
-			// productListi.setGridLinesVisible(true);
-			for (int j = 0; j < 18; j++) {
-				productListi.getColumnConstraints().add(new ColumnConstraints(200));
-				Produit produitn = new Produit("img/img_product1.png", "Article " + n, "19.99€",
-						"Description article " + n);
-				productListi.add(produitn, j, 0);
-				n++;
-			}
-			HBox.setHgrow(productListi, Priority.ALWAYS);
-			// Pour lister et scroll les produits
-			ScrollPane scrollablei = new ScrollPane();
-			scrollablei.setContent(productListi);
-			scrollablei.setVbarPolicy(ScrollBarPolicy.NEVER);
-			scrollablei.setHbarPolicy(ScrollBarPolicy.AS_NEEDED);
-			scrollablei.setBackground(new Background(new BackgroundFill(null, new CornerRadii(10), Insets.EMPTY)));
-			this.getChildren().add(scrollablei);
-			Contenu_accueil.setMargin(scrollablei, new Insets(15, 0, 0, 0));
-			VBox.setVgrow(scrollablei, Priority.ALWAYS);
-		}
+		Liste_produit propositions1 = new Liste_produit(75, 20);
+		Contenu_accueil.setMargin(propositions1, new Insets(15, 0, 0, 0));
+		VBox.setVgrow(propositions1, Priority.ALWAYS);
+		Liste_produit propositions2 = new Liste_produit(75, 20);
+		Contenu_accueil.setMargin(propositions2, new Insets(15, 0, 0, 0));
+		VBox.setVgrow(propositions2, Priority.ALWAYS);
+		
+		this.getChildren().addAll(propositions1, propositions2);
 	}
 }
