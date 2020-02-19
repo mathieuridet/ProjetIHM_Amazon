@@ -1,11 +1,11 @@
 package amazon_projet.accueil;
 
+import amazon_projet.Recup_image;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -25,8 +25,8 @@ public class Contenu_accueil extends VBox {
 
 		// -------------------------------------------------------------------------------
 		// Pub
-		Image img_pub = new Image(this.getClass().getResourceAsStream("img/img_pub.png"));
-		ImageView imgview_pub = new ImageView(img_pub);
+		Recup_image recup = new Recup_image("img/img_pub.png");
+		ImageView imgview_pub = new ImageView(recup.getImg());
 
 		HBox box_pub = new HBox();
 		box_pub.getChildren().add(imgview_pub);
@@ -45,7 +45,8 @@ public class Contenu_accueil extends VBox {
 		TextField recherche_textuelle = new TextField();
 		recherche_textuelle.setMaxHeight(Double.MAX_VALUE);
 
-		Button loupe = new Button("", new ImageView(new Image(getClass().getResourceAsStream("img/img_loupe.png"))));
+		Recup_image recup2 = new Recup_image("img/img_loupe.png");
+		Button loupe = new Button("", new ImageView(recup2.getImg()));
 		loupe.setBackground(new Background(new BackgroundFill(Color.CORAL, new CornerRadii(5), Insets.EMPTY)));
 		loupe.setPadding(new Insets(5, 25, 5, 25));
 

@@ -1,5 +1,6 @@
 package amazon_projet.accueil;
 
+import amazon_projet.Recup_image;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -57,7 +58,8 @@ public class Barre_menu_gauche extends BorderPane {
 		datelivraison_commande.setPadding(new Insets(10));
 
 		// Icône en bas du menu de gauche
-		Image img_icone = new Image(this.getClass().getResourceAsStream("img/img_icone.png"));
+		Recup_image recup = new Recup_image("img/img_icone.png");
+		Image img_icone = recup.getImg();
 		ImageView imgview_icone = new ImageView(img_icone);
 		imgview_icone.setFitHeight(75);
 		imgview_icone.setFitWidth(75);

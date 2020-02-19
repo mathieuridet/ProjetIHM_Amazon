@@ -5,11 +5,11 @@
  */
 package amazon_projet.accueil;
 
+import amazon_projet.Recup_image;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -31,7 +31,8 @@ public class Produit extends VBox {
 	public Produit(String img, String nomArticle, String price, String txt) {
 
 		this.article = new Label(nomArticle);
-		this.imView = new ImageView(new Image(this.getClass().getResourceAsStream(img)));
+		Recup_image recup = new Recup_image(img);
+		this.imView = new ImageView(recup.getImg());
 		this.imView.setFitHeight(80);
 		this.imView.setFitWidth(80);
 		this.article.setGraphic(imView);
