@@ -1,16 +1,12 @@
 package amazon_projet.accueil;
 
-import javafx.event.EventHandler;
 import javafx.geometry.HPos;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.RowConstraints;
 
 public class Page_Accueil extends GridPane {
-	
-	private boolean menu_droite_visible = false;
 
 	public Page_Accueil() {
 		// this.setGridLinesVisible(true);
@@ -56,31 +52,16 @@ public class Page_Accueil extends GridPane {
 		// Partie relative au centre de la page
 		// -------------------------------------------------------------------------------
 
-		Contenu contenu_central = new Contenu();
+		Contenu_accueil contenu = new Contenu_accueil();
 
 		// Partie menu de droite
-		Menu_droit menu_droit = new Menu_droit();
+		Menu_droit menu_droit = new Menu_droit(menu_haut);
 		menu_droit.setVisible(false);
 		menu_droit.setManaged(false);
 		
 		// Contenant des 2 éléments précédents
 		HBox contenant_central = new HBox();
-		contenant_central.getChildren().addAll(contenu_central, menu_droit);
-		
-		// Event pour faire apparaître et disparaître le menu de droite
-		menu_haut.getMenu_deroulant_droite().setOnMousePressed(new EventHandler<MouseEvent>() {
-			public void handle(MouseEvent me) {
-				if (isMenu_droite_visible()) {
-					setMenu_droite_visible(false);
-					menu_droit.setVisible(false);
-					menu_droit.setManaged(false);
-				} else {
-					setMenu_droite_visible(true);
-					menu_droit.setVisible(true);
-					menu_droit.setManaged(true);
-				}
-			}
-		});
+		contenant_central.getChildren().addAll(contenu, menu_droit);
 		
 		// -------------------------------------------------------------------------------
 		// On ajoute les éléments dans les bonnes cases du GridPane
@@ -91,12 +72,5 @@ public class Page_Accueil extends GridPane {
 		this.add(menu_gauche, 0, 1);
 		this.add(contenant_central, 1, 1);
 	}
-
-	public boolean isMenu_droite_visible() {
-		return menu_droite_visible;
-	}
-
-	public void setMenu_droite_visible(boolean menu_droite_visible) {
-		this.menu_droite_visible = menu_droite_visible;
-	}
+	
 }

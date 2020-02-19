@@ -2,24 +2,17 @@ package amazon_projet.produit;
 
 import amazon_projet.accueil.Barre_menu_haut;
 import amazon_projet.accueil.Coin_haut_gauche;
+import amazon_projet.accueil.Menu_droit;
 import amazon_projet.accueil.Produit;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 
 public class Page_Produit extends GridPane {
 
@@ -38,7 +31,7 @@ public class Page_Produit extends GridPane {
 
 		// L largeur de de la page fait bien 100%
 		ColumnConstraints column1 = new ColumnConstraints();
-		column1.setPercentWidth(200);
+		column1.setPercentWidth(100);
 		this.getColumnConstraints().add(column1);
 
 		// -------------------------------------------------------------------------------
@@ -65,54 +58,32 @@ public class Page_Produit extends GridPane {
 		HBox.setHgrow(menu_haut, Priority.ALWAYS);
 
 		// -------------------------------------------------------------------------------
-		// On gère la partie du GridPane et des informations du produit
+		// On gère la partie des informations du produit
 		// -------------------------------------------------------------------------------
 
-		GridPane contenant = new GridPane();
-		ColumnConstraints colonne_info = new ColumnConstraints();
-		colonne_info.setPrefWidth(100);
-		colonne_info.setHgrow(Priority.ALWAYS);
-		contenant.getColumnConstraints().add(colonne_info);
+		Contenu_produit contenu = new Contenu_produit();
 
-		// On partage la page en 3 parties horizontales de même hauteur
-		for (int i = 0; i < 3; i++) {
-			contenant.getRowConstraints().add(new RowConstraints(500));
-			if (i == 0) {
-				HBox rectangle_haut = new HBox();
-				contenant.add(rectangle_haut, 0, 0);
-				rectangle_haut.setBackground(
-						new Background(new BackgroundFill(Color.LIGHTSTEELBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
-			} else if (i == 1) {
-				HBox rectangle_milieu = new HBox();
-				contenant.add(rectangle_milieu, 0, 1);
-				rectangle_milieu
-						.setBackground(new Background(new BackgroundFill(null, CornerRadii.EMPTY, Insets.EMPTY)));
-			} else {
-				HBox rectangle_bas = new HBox();
-				contenant.add(rectangle_bas, 0, 2);
-				rectangle_bas.setBackground(
-						new Background(new BackgroundFill(Color.LIGHTSTEELBLUE, CornerRadii.EMPTY, Insets.EMPTY)));
-				rectangle_bas.setAlignment(Pos.CENTER);
-				Label commentaires = new Label("COMMENTAIRES");
-				HBox.setHgrow(commentaires, Priority.ALWAYS);
-				commentaires.setFont(Font.font("Arial", FontWeight.BOLD, 50));
-				rectangle_bas.getChildren().add(commentaires);
-			}
-		}
+		// Partie menu de droite
+		Menu_droit menu_droit = new Menu_droit(menu_haut);
+		menu_droit.setVisible(false);
+		menu_droit.setManaged(false);
 
-		contenant.setGridLinesVisible(true);
+		// Contenant des 2 éléments précédents
+		HBox contenant_central = new HBox();
+		HBox.setHgrow(contenu, Priority.ALWAYS);
+		contenant_central.getChildren().addAll(contenu, menu_droit);
 
 		// -------------------------------------------------------------------------------
-		// On gère la partie du ScrollPane pour pouvoir scroll juste le contenu
+		// On utilise un ScrollPane pour pouvoir scroll juste le contenu
 		// -------------------------------------------------------------------------------
 
-		ScrollPane scroll_du_contenant = new ScrollPane(contenant);
-		scroll_du_contenant.setFitToWidth(true);
-		scroll_du_contenant.setVbarPolicy(ScrollBarPolicy.AS_NEEDED);
-		scroll_du_contenant.setHbarPolicy(ScrollBarPolicy.NEVER);
+		ScrollPane contenant = new ScrollPane(contenant_central);
+		contenant.setFitToWidth(true);
+		contenant.setVbarPolicy(ScrollBarPolicy.AS_NEEDED);
+		contenant.setHbarPolicy(ScrollBarPolicy.NEVER);
 
-		VBox.setVgrow(scroll_du_contenant, Priority.ALWAYS);
+		VBox.setVgrow(contenant, Priority.ALWAYS);
 		this.add(menu_fixe, 0, 0);
-		this.add(scroll_du_contenant, 0, 1);
+		this.add(contenant, 0, 1);
 	}
 }
