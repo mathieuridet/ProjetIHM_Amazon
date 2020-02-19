@@ -1,9 +1,9 @@
 package amazon_projet.accueil;
 
+import amazon_projet.Recup_image;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.control.ContentDisplay;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -42,7 +42,8 @@ public class Barre_menu_haut extends GridPane {
 		Composant_menu_haut mon_compte = new Composant_menu_haut(" Mon Compte", "img/img_moncompte.png",
 				ContentDisplay.LEFT, HPos.CENTER);
 
-		ImageView img_logo = new ImageView(new Image(this.getClass().getResourceAsStream("img/img_logo_amazon.png")));
+		Recup_image recup = new Recup_image("img/img_logo_amazon.png");
+		ImageView img_logo = new ImageView(recup.getImg());
 
 		img_logo.setFitHeight(45);
 		img_logo.setFitWidth(135);

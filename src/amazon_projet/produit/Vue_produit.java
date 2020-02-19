@@ -1,11 +1,11 @@
 package amazon_projet.produit;
 
+import amazon_projet.Recup_image;
 import amazon_projet.accueil.Produit;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -68,8 +68,8 @@ public class Vue_produit extends GridPane {
 			int n = j;
 			if (j > 3)
 				n = j - 2;
-			ImageView vuei = new ImageView(
-					new Image(this.getClass().getResourceAsStream("../accueil/img/img_product" + n + ".png")));
+			Recup_image recup = new Recup_image("img/img_product" + n + ".png");
+			ImageView vuei = new ImageView(recup.getImg());
 			VBox.setMargin(vuei, new Insets(20, 0, 20, 0));
 			vues.getChildren().add(vuei);
 		}

@@ -5,11 +5,11 @@
  */
 package amazon_projet.accueil;
 
+import amazon_projet.Recup_image;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -22,8 +22,8 @@ import javafx.scene.text.Font;
 public class Composant_menu_haut extends Label {
     
     public Composant_menu_haut(String nom, String chemin_img, ContentDisplay contentdisplay, HPos horizontal_position) {
-        Image img = new Image(this.getClass().getResourceAsStream(chemin_img));
-        ImageView imageview = new ImageView(img);
+        Recup_image recup = new Recup_image(chemin_img);
+        ImageView imageview = new ImageView(recup.getImg());
         imageview.setFitHeight(30);
         imageview.setFitWidth(30);
         this.setText(nom);

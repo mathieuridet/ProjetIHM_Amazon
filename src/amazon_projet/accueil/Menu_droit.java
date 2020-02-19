@@ -5,9 +5,9 @@
  */
 package amazon_projet.accueil;
 
+import amazon_projet.Recup_image;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
@@ -38,8 +38,8 @@ public class Menu_droit extends GridPane {
 		this.getColumnConstraints().addAll(column1, column2);
 
 		for (int i = 0; i < cats.length; i++) {
-			ImageView imageview = new ImageView(
-					new Image(this.getClass().getResourceAsStream("img/img_leftArrow.png")));
+			Recup_image recup = new Recup_image("img/img_leftArrow.png");
+			ImageView imageview = new ImageView(recup.getImg());
 			imageview.setFitHeight(20);
 			imageview.setFitWidth(20);
 			Text txt = new Text(cats[i]);
