@@ -28,8 +28,8 @@ public class Amazon_Projet extends Application {
 		primaryStage.show();
 
 		// La scène de la page produit
-		Page_Produit test = new Page_Produit(
-				new Produit("img/img_product1.png", "Article test", "19.99€", "Description article test"));
+		Page_Produit test = new Page_Produit(new Produit("img/img_product1.png", "TITRE", "PRIX €",
+				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitatio"));
 
 		Stage test_produit = new Stage();
 

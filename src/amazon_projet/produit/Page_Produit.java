@@ -16,7 +16,7 @@ import javafx.scene.layout.VBox;
 
 public class Page_Produit extends GridPane {
 
-	public Page_Produit(Produit product) {
+	public Page_Produit(Produit prod) {
 
 		// -------------------------------------------------------------------------------
 		// On donne les bonnes tailles (en pourcentage) au cases du GridPane
@@ -61,8 +61,24 @@ public class Page_Produit extends GridPane {
 		// On gère la partie des informations du produit
 		// -------------------------------------------------------------------------------
 
-		Contenu_produit contenu = new Contenu_produit();
-
+		GridPane infos_produit = new GridPane();
+		ColumnConstraints colonne_infos = new ColumnConstraints();
+		colonne_infos.setPrefWidth(100);
+		colonne_infos.setHgrow(Priority.ALWAYS);
+		infos_produit.getColumnConstraints().add(colonne_infos);
+		for (int i = 0; i < 4; i++) {
+			infos_produit.getRowConstraints().add(new RowConstraints(500));
+		}
+		
+		Vue_produit productView = new Vue_produit(prod);
+		infos_produit.add(productView, 0, 0);
+		Suggestions suggest = new Suggestions();
+		infos_produit.add(suggest, 0, 1);
+		Commentaires coms = new Commentaires();
+		infos_produit.add(coms, 0, 2);
+		Fiche_technique tech = new Fiche_technique();
+		infos_produit.add(tech, 0, 3);
+		
 		// Partie menu de droite
 		Menu_droit menu_droit = new Menu_droit(menu_haut);
 		menu_droit.setVisible(false);
@@ -70,8 +86,8 @@ public class Page_Produit extends GridPane {
 
 		// Contenant des 2 éléments précédents
 		HBox contenant_central = new HBox();
-		HBox.setHgrow(contenu, Priority.ALWAYS);
-		contenant_central.getChildren().addAll(contenu, menu_droit);
+		HBox.setHgrow(infos_produit, Priority.ALWAYS);
+		contenant_central.getChildren().addAll(infos_produit, menu_droit);
 
 		// -------------------------------------------------------------------------------
 		// On utilise un ScrollPane pour pouvoir scroll juste le contenu
