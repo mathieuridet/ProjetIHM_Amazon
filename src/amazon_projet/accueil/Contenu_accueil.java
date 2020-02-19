@@ -22,9 +22,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class Contenu extends VBox {
+public class Contenu_accueil extends VBox {
 
-	public Contenu() {
+	public Contenu_accueil() {
 		this.setAlignment(Pos.TOP_CENTER);
 		this.setPadding(new Insets(10));
 
@@ -61,7 +61,7 @@ public class Contenu extends VBox {
 		// -------------------------------------------------------------------------------
 		// On attache la pub et la barre de recherche au contenant principal
 		this.getChildren().addAll(box_pub, barre_du_milieu);
-		Contenu.setMargin(barre_du_milieu, new Insets(15, 0, 0, 0));
+		Contenu_accueil.setMargin(barre_du_milieu, new Insets(15, 0, 0, 0));
 
 		// -------------------------------------------------------------------------------
 		// Partie produits
@@ -90,7 +90,7 @@ public class Contenu extends VBox {
 			scrollablei.setHbarPolicy(ScrollBarPolicy.AS_NEEDED);
 			scrollablei.setBackground(new Background(new BackgroundFill(null, new CornerRadii(10), Insets.EMPTY)));
 			this.getChildren().add(scrollablei);
-			Contenu.setMargin(scrollablei, new Insets(15, 0, 0, 0));
+			Contenu_accueil.setMargin(scrollablei, new Insets(15, 0, 0, 0));
 			VBox.setVgrow(scrollablei, Priority.ALWAYS);
 		}
 	}
