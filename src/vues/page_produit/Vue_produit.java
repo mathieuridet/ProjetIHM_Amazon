@@ -1,7 +1,7 @@
-package amazon_projet.produit;
+package vues.page_produit;
 
 import amazon_projet.Recup_image;
-import amazon_projet.accueil.Produit;
+import vues.communs.Produit;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

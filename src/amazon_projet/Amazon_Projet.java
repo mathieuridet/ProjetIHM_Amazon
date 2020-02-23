@@ -8,9 +8,9 @@ package amazon_projet;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import amazon_projet.accueil.Page_Accueil;
-import amazon_projet.accueil.Produit;
-import amazon_projet.produit.Page_Produit;
+import vues.page_acceuil.Page_Accueil;
+import vues.communs.Produit;
+import vues.page_produit.Page_Produit;
 
 public class Amazon_Projet extends Application {
 

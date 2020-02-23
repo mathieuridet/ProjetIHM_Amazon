@@ -1,4 +1,4 @@
-package amazon_projet.accueil;
+package vues.communs;
 
 import amazon_projet.Recup_image;
 import javafx.geometry.HPos;

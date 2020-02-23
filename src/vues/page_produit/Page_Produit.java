@@ -1,9 +1,9 @@
-package amazon_projet.produit;
+package vues.page_produit;
 
-import amazon_projet.accueil.Barre_menu_haut;
-import amazon_projet.accueil.Coin_haut_gauche;
-import amazon_projet.accueil.Menu_droit;
-import amazon_projet.accueil.Produit;
+import vues.communs.Barre_menu_haut;
+import vues.page_acceuil.Coin_haut_gauche;
+import vues.communs.Menu_droit;
+import vues.communs.Produit;
 import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;

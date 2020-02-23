@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package amazon_projet.accueil;
+package vues.communs;
 
 import amazon_projet.Recup_image;
 import javafx.geometry.Insets;

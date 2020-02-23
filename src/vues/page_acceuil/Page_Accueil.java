@@ -1,5 +1,7 @@
-package amazon_projet.accueil;
+package vues.page_acceuil;
 
+import vues.communs.Barre_menu_haut;
+import vues.communs.Menu_droit;
 import javafx.geometry.HPos;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;

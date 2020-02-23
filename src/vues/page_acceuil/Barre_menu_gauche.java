@@ -1,6 +1,7 @@
-package amazon_projet.accueil;
+package vues.page_acceuil;
 
 import amazon_projet.Recup_image;
+import vues.communs.Produit;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;

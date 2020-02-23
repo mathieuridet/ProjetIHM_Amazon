@@ -1,4 +1,4 @@
-package amazon_projet.produit;
+package vues.page_produit;
 
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;

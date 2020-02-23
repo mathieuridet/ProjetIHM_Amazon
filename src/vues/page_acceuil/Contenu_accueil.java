@@ -1,4 +1,4 @@
-package amazon_projet.accueil;
+package vues.page_acceuil;
 
 import amazon_projet.Recup_image;
 import javafx.geometry.Insets;

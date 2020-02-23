@@ -1,5 +1,6 @@
-package amazon_projet.accueil;
+package vues.page_acceuil;
 
+import vues.communs.Produit;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
