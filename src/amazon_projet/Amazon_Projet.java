@@ -5,6 +5,7 @@
  */
 package amazon_projet;
 
+import Model.BD_Amazon;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -16,6 +17,9 @@ public class Amazon_Projet extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
+                // On setup la BD
+                BD_Amazon bd = new BD_Amazon("amazon", "jdbc:mariadb://176.158.51.172:3300/amazon", "jdbcUser", "AmazonIHM");
+            
 		// La scène de la page d'accueil
 		Page_Accueil accueil = new Page_Accueil();
 

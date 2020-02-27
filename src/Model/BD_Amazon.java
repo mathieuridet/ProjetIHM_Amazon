@@ -17,19 +17,24 @@ import java.sql.Statement;
  */
 public class BD_Amazon {
     
-    static Connection conn = null;
+    Connection conn = null;
+    String nom, url, username, pwd;
     
-    public static void connectToDB() {
+    public BD_Amazon(String nom, String url, String username, String pwd) {
+        this.nom = nom;
+        this.url = url;
+        this.username = username;
+        this.pwd = pwd;
+        
+        connexionToBd();
+    }
+    
+    private void connexionToBd() {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
             System.out.println("Driver O.K.");
 
-            String nomBD = "nomBD";
-            String url = "jdbc:mariadb://localhost:5432/Ecole";
-            String user = "postgres";
-            String mdp = "postgres";
-
-            conn = DriverManager.getConnection(url, user, mdp);
+            conn = DriverManager.getConnection(url, username, pwd);
             System.out.println("Connexion effective !");         
 
         } catch (Exception e) {
@@ -37,7 +42,7 @@ public class BD_Amazon {
         }      
     }
     
-    public static void execute_select(String query) throws SQLException {
+    public void execute_select(String query) throws SQLException {
         // create the java statement
         Statement st = conn.createStatement();
 
@@ -55,14 +60,14 @@ public class BD_Amazon {
         st.close();
     }
     
-    public static void execute_insertOrUpdate(String query) throws SQLException {
+    public void execute_insertOrUpdate(String query) throws SQLException {
         Statement st = conn.createStatement();
         st.executeUpdate(query);
         st.close();
     }
     
     
-    public static void close_connection() throws SQLException {
+    public void close_connection() throws SQLException {
         conn.close();
     }
     

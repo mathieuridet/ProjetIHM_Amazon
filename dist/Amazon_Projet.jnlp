@@ -8,7 +8,8 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Amazon_Projet.jar" size="524242" download="eager" />
+    <jar href="Amazon_Projet.jar" size="278402" download="eager" />
+    <jar href="lib/mariadb-java-client-2.5.4-sources.jar" size="624253" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Amazon_Projet" >
     <param name="requiredFXVersion" value="8.0+"/>
