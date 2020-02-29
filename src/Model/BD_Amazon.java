@@ -10,6 +10,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -27,6 +31,14 @@ public class BD_Amazon {
         this.pwd = pwd;
         
         connexionToBd();
+        /*
+         * Utile pour reset toute la BD si on veut
+        try {
+            fillDB();
+        } catch (SQLException ex) {
+            Logger.getLogger(BD_Amazon.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        */
     }
     
     private void connexionToBd() {
@@ -42,6 +54,62 @@ public class BD_Amazon {
         }      
     }
     
+    //--------------------------------------------------------------------------
+    // Remplissage de la BD
+    public void execute_insertOrUpdate(String query) throws SQLException {
+        Statement st = conn.createStatement();
+        st.executeUpdate(query);
+        st.close();
+    }
+    
+    public void fillDB() throws SQLException {
+        List<String> elements = new ArrayList<>();
+
+        // Table Commande
+        String cmd1 = "INSERT INTO Commande VALUES(1);";
+        String cmd2 = "INSERT INTO Commande VALUES(2);";
+        elements.add(cmd1);
+        elements.add(cmd2);
+
+        // Table Produit
+        String prod1 = "INSERT INTO Produit VALUES(1, 'Produit 1', 19.99, 'Description 1', 'NULL')";
+        String prod2 = "INSERT INTO Produit VALUES(2, 'Produit 2', 99.99, 'Description 2', 'NULL')";
+        String prod3 = "INSERT INTO Produit VALUES(3, 'Produit 3', 79.99, 'Description 3', 'NULL')";
+        String prod4 = "INSERT INTO Produit VALUES(4, 'Produit 4', 119.99, 'Description 4', 'NULL')";
+        String prod5 = "INSERT INTO Produit VALUES(5, 'Produit 5', 10.00, 'Description 5', 'NULL')";
+        elements.add(prod1);
+        elements.add(prod2);
+        elements.add(prod3);
+        elements.add(prod4);
+        elements.add(prod5);
+        
+        // Table Achat
+        String achat1 = "INSERT INTO Achat VALUES(1, 1, 1, 2)";
+        String achat2 = "INSERT INTO Achat VALUES(2, 1, 5, 5)";
+        String achat3 = "INSERT INTO Achat VALUES(3, 2, 1, 1)";
+        String achat4 = "INSERT INTO Achat VALUES(4, 2, 4, 1)";
+        String achat5 = "INSERT INTO Achat VALUES(5, 2, 3, 10)";
+        elements.add(achat1);
+        elements.add(achat2);
+        elements.add(achat3);
+        elements.add(achat4);
+        elements.add(achat5);
+        
+        for(String el : elements) {
+            execute_insertOrUpdate(el);
+        }
+        
+    }
+    
+    
+    //--------------------------------------------------------------------------
+
+    
+    /**
+     * 
+     * @param query
+     * @throws SQLException 
+     */
     public void execute_select(String query) throws SQLException {
         // create the java statement
         Statement st = conn.createStatement();
@@ -60,11 +128,7 @@ public class BD_Amazon {
         st.close();
     }
     
-    public void execute_insertOrUpdate(String query) throws SQLException {
-        Statement st = conn.createStatement();
-        st.executeUpdate(query);
-        st.close();
-    }
+    
     
     
     public void close_connection() throws SQLException {
