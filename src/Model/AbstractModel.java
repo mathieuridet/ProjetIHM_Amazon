@@ -22,7 +22,8 @@ public abstract class AbstractModel implements Observable{
     // Affichage produits
     public abstract ResultSet selectProductInCommand(int IDCommande);
     public abstract ResultSet selectProductByCategory(String cat);
-    
+    public abstract ResultSet selectPrixProductInACommand(int IDCommande);
+    public abstract ResultSet selectDateLivraisonCommand(int IDCommande);
     
     //Implémentation du pattern observer
     public void addObserver(Observer obs) {

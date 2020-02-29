@@ -31,7 +31,6 @@ public class Produit extends VBox {
 	public Produit(String img, String nomArticle, String price, String txt) {
 
 		this.article = new Label(nomArticle);
-                System.out.println("***********************" + img);
 		Recup_image recup = new Recup_image(img);
 		this.imView = new ImageView(recup.getImg());
 		this.imView.setFitHeight(80);
@@ -61,18 +60,18 @@ public class Produit extends VBox {
 	}
 
 	public Label getArticle() {
-		return article;
+		return this.article;
 	}
 
 	public ImageView getImView() {
-		return imView;
+		return this.imView;
 	}
 
 	public Label getPrix() {
-		return prix;
+		return this.prix;
 	}
 
 	public Label getDescription() {
-		return description;
+		return this.description;
 	}
 }

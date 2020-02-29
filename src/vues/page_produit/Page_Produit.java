@@ -1,5 +1,6 @@
 package vues.page_produit;
 
+import controlers.AbstractControler;
 import vues.communs.Barre_menu_haut;
 import vues.page_acceuil.Coin_haut_gauche;
 import vues.communs.Menu_droit;
@@ -16,7 +17,7 @@ import javafx.scene.layout.VBox;
 
 public class Page_Produit extends GridPane {
 
-	public Page_Produit(Produit prod) {
+	public Page_Produit(Produit prod, AbstractControler controler) {
 
 		// -------------------------------------------------------------------------------
 		// On donne les bonnes tailles (en pourcentage) au cases du GridPane
@@ -72,7 +73,7 @@ public class Page_Produit extends GridPane {
 		
 		Vue_produit productView = new Vue_produit(prod);
 		infos_produit.add(productView, 0, 0);
-		Suggestions suggest = new Suggestions();
+		Suggestions suggest = new Suggestions(controler);
 		infos_produit.add(suggest, 0, 1);
 		Commentaires coms = new Commentaires();
 		infos_produit.add(coms, 0, 2);

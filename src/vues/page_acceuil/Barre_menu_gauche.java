@@ -38,27 +38,22 @@ public class Barre_menu_gauche extends BorderPane {
         // menu_gauche.minHeight(scene.getHeight());
         // menu_haut.setTranslateX(menu_gauche.getWidth());
 
-	// Creation des articles
-	Produit produit1 = null;
-	Produit produit2 = null;
-        // TODO : faire une boucle !!
+	// On recupere les articles constituant la commande d'ID 1 dans la BD
         List<Produit> produits = this.controler.getProductsByCommand(1);
-        produit1 = produits.get(0);
-        produit2 = produits.get(1);
 
 	// Liste d'articles (dans le menu de gauche)
-	ObservableList<VBox> commandeList = FXCollections.<VBox>observableArrayList(produit1, produit2);
+	ObservableList<VBox> commandeList = FXCollections.<VBox>observableArrayList(produits);
 	ListView<VBox> articles_commande = new ListView<>(commandeList);
 	articles_commande.setOrientation(Orientation.VERTICAL);
 	articles_commande.setStyle("-fx-control-inner-background: #183152; -fx-background-insets: 0; -fx-padding: 0;");
 
-	// Prix et date livraison commande
-	Label prix_commande = new Label("Prix");
+	// Prix et date livraison de la commande d'ID 1
+	Label prix_commande = new Label(this.controler.getPrixTotalCommande(1));
 	prix_commande.setFont(new Font("Comic sans MS", 20));
 	prix_commande.setStyle("-fx-font-weight: bold");
 	prix_commande.setTextFill(Color.WHITE);
 	prix_commande.setPadding(new Insets(10));
-	Label datelivraison_commande = new Label("Date Livraison");
+	Label datelivraison_commande = new Label(this.controler.getDateLivraisonCommand(1));
 	datelivraison_commande.setFont(new Font("Comic sans MS", 20));
 	datelivraison_commande.setStyle("-fx-font-weight: bold");
 	datelivraison_commande.setTextFill(Color.WHITE);

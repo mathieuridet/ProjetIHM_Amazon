@@ -63,7 +63,7 @@ public class Page_Accueil extends GridPane implements Observer {
 	// Partie relative au centre de la page
 	// -------------------------------------------------------------------------------
 
-	Contenu_accueil contenu = new Contenu_accueil();
+	Contenu_accueil contenu = new Contenu_accueil(controler);
 
 	// Partie menu de droite
 	Menu_droit menu_droit = new Menu_droit(menu_haut);

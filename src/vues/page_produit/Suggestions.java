@@ -1,5 +1,6 @@
 package vues.page_produit;
 
+import controlers.AbstractControler;
 import vues.page_acceuil.Liste_produit;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -21,7 +22,7 @@ import javafx.scene.text.TextAlignment;
 
 public class Suggestions extends GridPane {
 
-	public Suggestions() {
+	public Suggestions(AbstractControler controler) {
 		// partie relative aux suggestions du site en adéquation avec le produit
 
 		// Une unique ligne qui fait 100% de la zone couverte
@@ -53,7 +54,7 @@ public class Suggestions extends GridPane {
 
 		// -------------------------------------------------------------------------------
 		// 2e partie
-		Liste_produit recommandations = new Liste_produit(150, 90, 40, 30, 15);
+		Liste_produit recommandations = new Liste_produit(150, 90, 40, 30, 15, controler);
 		
 		this.add(recommandations, 1, 0);
 
