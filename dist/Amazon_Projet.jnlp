@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Amazon_Projet.jar" size="279447" download="eager" />
+    <jar href="Amazon_Projet.jar" size="284503" download="eager" />
     <jar href="lib/mariadb-java-client-2.3.0-javadoc.jar" size="1581295" download="eager" />
     <jar href="lib/mariadb-java-client-2.3.0-sources.jar" size="606189" download="eager" />
     <jar href="lib/mariadb-java-client-2.3.0.jar" size="585828" download="eager" />

@@ -12,8 +12,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -21,34 +19,12 @@ import java.util.logging.Logger;
  */
 public class BD_Amazon {
     
-    Connection conn = null;
-    String nom, url, username, pwd;
+    static Connection conn;
     
-    public BD_Amazon(String nom, String url, String username, String pwd) {
-        this.nom = nom;
-        this.url = url;
-        this.username = username;
-        this.pwd = pwd;
-        
-        connexionToBd();
-        /*
-         * Utile pour reset toute la BD si on veut
-        try {
-            fillDB();
-        } catch (SQLException ex) {
-            Logger.getLogger(BD_Amazon.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        */
-    }
-    
-    private void connexionToBd() {
+    public static void connexionToBd(String nom, String url, String username, String pwd) {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
-            System.out.println("Driver O.K.");
-
             conn = DriverManager.getConnection(url, username, pwd);
-            System.out.println("Connexion effective !");         
-
         } catch (Exception e) {
             e.printStackTrace();
         }      
@@ -56,13 +32,13 @@ public class BD_Amazon {
     
     //--------------------------------------------------------------------------
     // Remplissage de la BD
-    public void execute_insertOrUpdate(String query) throws SQLException {
+    public static void execute_insertOrUpdate(String query) throws SQLException {
         Statement st = conn.createStatement();
         st.executeUpdate(query);
         st.close();
     }
     
-    public void fillDB() throws SQLException {
+    public static void fillDB() throws SQLException {
         List<String> elements = new ArrayList<>();
 
         // Table Commande
@@ -100,41 +76,25 @@ public class BD_Amazon {
         }
         
     }
-    
-    
+     
     //--------------------------------------------------------------------------
-
     
     /**
      * 
      * @param query
      * @throws SQLException 
      */
-    public void execute_select(String query) throws SQLException {
+    public static ResultSet execute_select(String query) throws SQLException {
         // create the java statement
         Statement st = conn.createStatement();
 
         // execute the query, and get a java resultset
         ResultSet rs = st.executeQuery(query);
-
-        // iterate through the java resultset
-        while (rs.next())
-        {
-          //String nomAttr = rs.getString("nomColonne");
-          
-          // print the results
-          //System.out.format("%s, %s, %s, %s, %s, %s\n", rs.getString("ENGINE"), support, comment, transactions, xa, savepoints);
-        }
-        st.close();
+        return rs;
     }
     
-    
-    
-    
-    public void close_connection() throws SQLException {
+    public static void close_connection() throws SQLException {
         conn.close();
     }
-    
-    
     
 }

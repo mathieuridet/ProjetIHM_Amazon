@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package observer;
 
 /**
  *
- * @author daekc
+ * @author mathieuridet
  */
-public class ModelPageProduit {
-    
+public interface Observer {
+    public void update(String str);
 }

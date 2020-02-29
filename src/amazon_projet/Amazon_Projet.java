@@ -5,7 +5,12 @@
  */
 package amazon_projet;
 
+import Model.AbstractModel;
 import Model.BD_Amazon;
+import Model.Model;
+import controlers.AbstractControler;
+import controlers.Controler;
+import java.sql.SQLException;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -16,12 +21,16 @@ import vues.page_produit.Page_Produit;
 public class Amazon_Projet extends Application {
 
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage) throws SQLException {
 		// On setup la BD
-		BD_Amazon bd = new BD_Amazon("amazon", "jdbc:mariadb://176.158.51.172:3300/amazon", "jdbcUser", "AmazonIHM");
-
+                BD_Amazon.connexionToBd("amazon", "jdbc:mariadb://176.158.51.172:3300/amazon", "jdbcUser", "AmazonIHM");
+                
+                //Instanciation de notre modèle
+                AbstractModel model = new Model();
+                //Création du contrôleur
+                AbstractControler controler = new Controler(model);
 		// La scène de la page d'accueil
-		Page_Accueil accueil = new Page_Accueil();
+		Page_Accueil accueil = new Page_Accueil(controler);
 
 		Scene scene = new Scene(accueil);
 
