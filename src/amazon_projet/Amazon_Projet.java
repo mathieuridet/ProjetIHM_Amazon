@@ -23,12 +23,12 @@ public class Amazon_Projet extends Application {
 	@Override
 	public void start(Stage primaryStage) throws SQLException {
 		// On setup la BD
-                BD_Amazon.connexionToBd("amazon", "jdbc:mariadb://176.158.51.172:3300/amazon", "jdbcUser", "AmazonIHM");
-                
-                //Instanciation de notre modèle
-                AbstractModel model = new Model();
-                //Création du contrôleur
-                AbstractControler controler = new Controler(model);
+		BD_Amazon.connexionToBd("amazon", "jdbc:mariadb://176.158.51.172:3300/amazon", "jdbcUser", "AmazonIHM");
+
+		// Instanciation de notre modèle
+		AbstractModel model = new Model();
+		// Création du contrôleur
+		AbstractControler controler = new Controler(model);
 		// La scène de la page d'accueil
 		Page_Accueil accueil = new Page_Accueil(controler);
 
@@ -42,7 +42,8 @@ public class Amazon_Projet extends Application {
 
 		// La scène de la page produit
 		Page_Produit test = new Page_Produit(new Produit("img/img_product1.png", "TITRE", "PRIX €",
-				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitatio"), controler);
+				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitatio"),
+				controler);
 
 		Stage test_produit = new Stage();
 
