@@ -15,30 +15,32 @@ import observer.Observer;
  *
  * @author mathieuridet
  */
-public abstract class AbstractModel implements Observable{
-    
-    private List<Observer> listObserver = new ArrayList<Observer>();   
-    
-    // Affichage produits
-    public abstract ResultSet selectProductInCommand(int IDCommande);
-    public abstract ResultSet selectProductByCategory(String cat);
-    public abstract ResultSet selectPrixProductInACommand(int IDCommande);
-    public abstract ResultSet selectDateLivraisonCommand(int IDCommande);
-    
-    //Implémentation du pattern observer
-    public void addObserver(Observer obs) {
-      this.listObserver.add(obs);
-    }
+public abstract class AbstractModel implements Observable {
 
-    public void notifyObserver(String str) {
-        
+	private List<Observer> listObserver = new ArrayList<Observer>();
 
-        for(Observer obs : listObserver)
-            obs.update(str);
-    }
+	// Affichage produits
+	public abstract ResultSet selectProductInCommand(int IDCommande);
 
-    public void removeObserver() {
-      listObserver = new ArrayList<Observer>();
-    }  
-    
+	public abstract ResultSet selectProductByCategory(String cat);
+
+	public abstract ResultSet selectPrixProductInACommand(int IDCommande);
+
+	public abstract ResultSet selectDateLivraisonCommand(int IDCommande);
+
+	// Implementation du pattern observer
+	public void addObserver(Observer obs) {
+		this.listObserver.add(obs);
+	}
+
+	public void notifyObserver(String str) {
+
+		for (Observer obs : listObserver)
+			obs.update(str);
+	}
+
+	public void removeObserver() {
+		listObserver = new ArrayList<Observer>();
+	}
+
 }
