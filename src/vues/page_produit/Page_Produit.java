@@ -70,7 +70,7 @@ public class Page_Produit extends GridPane {
 		for (int i = 0; i < 4; i++) {
 			infos_produit.getRowConstraints().add(new RowConstraints(500));
 		}
-		
+
 		Vue_produit productView = new Vue_produit(prod);
 		infos_produit.add(productView, 0, 0);
 		Suggestions suggest = new Suggestions(controler);
@@ -79,7 +79,7 @@ public class Page_Produit extends GridPane {
 		infos_produit.add(coms, 0, 2);
 		Fiche_technique tech = new Fiche_technique();
 		infos_produit.add(tech, 0, 3);
-		
+
 		// Partie menu de droite
 		Menu_droit menu_droit = new Menu_droit(menu_haut);
 		menu_droit.setVisible(false);
