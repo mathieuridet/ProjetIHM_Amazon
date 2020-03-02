@@ -8,18 +8,11 @@ import javafx.geometry.HPos;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
-import observer.Observer;
 
-public class Page_Accueil extends GridPane implements Observer {
-
-	// L'instance de notre objet contrôleur
-	@SuppressWarnings("unused")
-	private AbstractControler controler;
+public class Page_Accueil extends GridPane {
 
 	public Page_Accueil(AbstractControler controler) throws SQLException {
-		this.controler = controler;
 		// this.setGridLinesVisible(true);
 
 		// -------------------------------------------------------------------------------
@@ -89,11 +82,4 @@ public class Page_Accueil extends GridPane implements Observer {
 	 * actionPerformed(ActionEvent e) {
 	 * controler.setOperateur(((JButton)e.getSource()).getText()); } }
 	 */
-
-	@Override
-	public void update(String str) {
-		throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods, choose
-																		// Tools | Templates.
-	}
-
 }

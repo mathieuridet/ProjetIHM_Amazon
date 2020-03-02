@@ -79,7 +79,7 @@ public class Liste_produit extends ScrollPane {
 		// productList.setGridLinesVisible(true);
 		for (int i = 0; i < 18; i++) {
 			productList.getColumnConstraints().add(new ColumnConstraints(200));
-			Produit produitn = new Produit("img/img_product1.png", "Article " + n, "19.99€",
+			Produit produitn = new Produit(0, "img/img_product1.png", "Article " + n, "19.99€",
 					"Description article " + n);
 			produitn.getImView().setFitHeight(imgSize);
 			produitn.getImView().setFitWidth(imgSize);

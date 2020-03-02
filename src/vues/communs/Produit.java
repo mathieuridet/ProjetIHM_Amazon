@@ -23,13 +23,15 @@ import javafx.scene.text.TextAlignment;
  */
 public class Produit extends VBox {
 
+	private int idProduct;
 	private Label article;
 	private ImageView imView;
 	private Label prix;
 	private Label description;
 
-	public Produit(String img, String nomArticle, String price, String txt) {
+	public Produit(int id, String img, String nomArticle, String price, String txt) {
 
+		this.idProduct = id;
 		this.article = new Label(nomArticle);
 		Recup_image recup = new Recup_image(img);
 		this.imView = new ImageView(recup.getImg());
@@ -66,6 +68,10 @@ public class Produit extends VBox {
 		this.getChildren().add(article);
 		this.getChildren().add(prix);
 		this.getChildren().add(this.description);
+	}
+
+	public int getIdProduct() {
+		return idProduct;
 	}
 
 	public Label getArticle() {

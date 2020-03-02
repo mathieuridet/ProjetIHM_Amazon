@@ -41,35 +41,7 @@ public class BD_Amazon {
     public static void fillDB() throws SQLException {
         List<String> elements = new ArrayList<>();
 
-        // Table Commande
-        String cmd1 = "INSERT INTO Commande VALUES(1);";
-        String cmd2 = "INSERT INTO Commande VALUES(2);";
-        elements.add(cmd1);
-        elements.add(cmd2);
-
-        // Table Produit
-        String prod1 = "INSERT INTO Produit VALUES(1, 'Produit 1', 19.99, 'Description 1', 'NULL')";
-        String prod2 = "INSERT INTO Produit VALUES(2, 'Produit 2', 99.99, 'Description 2', 'NULL')";
-        String prod3 = "INSERT INTO Produit VALUES(3, 'Produit 3', 79.99, 'Description 3', 'NULL')";
-        String prod4 = "INSERT INTO Produit VALUES(4, 'Produit 4', 119.99, 'Description 4', 'NULL')";
-        String prod5 = "INSERT INTO Produit VALUES(5, 'Produit 5', 10.00, 'Description 5', 'NULL')";
-        elements.add(prod1);
-        elements.add(prod2);
-        elements.add(prod3);
-        elements.add(prod4);
-        elements.add(prod5);
-        
-        // Table Achat
-        String achat1 = "INSERT INTO Achat VALUES(1, 1, 1, 2)";
-        String achat2 = "INSERT INTO Achat VALUES(2, 1, 5, 5)";
-        String achat3 = "INSERT INTO Achat VALUES(3, 2, 1, 1)";
-        String achat4 = "INSERT INTO Achat VALUES(4, 2, 4, 1)";
-        String achat5 = "INSERT INTO Achat VALUES(5, 2, 3, 10)";
-        elements.add(achat1);
-        elements.add(achat2);
-        elements.add(achat3);
-        elements.add(achat4);
-        elements.add(achat5);
+        // méthode d'initialisation de la BD
         
         for(String el : elements) {
             execute_insertOrUpdate(el);

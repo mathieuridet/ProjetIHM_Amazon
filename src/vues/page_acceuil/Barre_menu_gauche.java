@@ -41,6 +41,13 @@ public class Barre_menu_gauche extends BorderPane {
 
 		// On récupère les articles constituant la commande d'ID 1 dans la BD
 		List<Produit> produits = this.controler.getProductsByCommand(this.tmpIdCommande);
+		for (Produit prod : produits) {
+			prod.setOnMousePressed(new EventHandler<MouseEvent>() {
+				public void handle(MouseEvent me) {
+					controler.GoVueProduit(prod);
+				}
+			});
+		}
 
 		// Liste d'articles (dans le menu de gauche)
 		ObservableList<VBox> commandeList = FXCollections.<VBox>observableArrayList(produits);

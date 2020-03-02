@@ -5,12 +5,16 @@
  */
 package observer;
 
+import javafx.scene.layout.GridPane;
+
 /**
  *
  * @author mathieuridet
  */
 public interface Observable {
-  public void addObserver(Observer obs);
-  public void removeObserver();
-  public void notifyObserver(String str);
+	public void addObserver(Observer obs);
+
+	public void removeObserver();
+
+	public void notifyObserver(GridPane gp);
 }

@@ -9,6 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import controlers.AbstractControler;
+import vues.communs.Produit;
+import vues.page_produit.Page_Produit;
 
 /**
  *
@@ -58,4 +61,8 @@ public class Model extends AbstractModel {
 		return null;
 	}
 
+	@Override
+	public void GoVueProduit(Produit p, AbstractControler controler) {
+		this.notifyObserver(new Page_Produit(p, controler));
+	}
 }

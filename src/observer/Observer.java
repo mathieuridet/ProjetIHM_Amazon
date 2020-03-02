@@ -5,10 +5,12 @@
  */
 package observer;
 
+import javafx.scene.layout.GridPane;
+
 /**
  *
  * @author mathieuridet
  */
 public interface Observer {
-    public void update(String str);
+	public void update(GridPane gp);
 }
