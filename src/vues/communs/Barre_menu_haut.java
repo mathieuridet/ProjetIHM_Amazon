@@ -11,8 +11,10 @@ import javafx.scene.layout.RowConstraints;
 
 public class Barre_menu_haut extends GridPane {
 
-	private Composant_menu_haut tirets_droite = new Composant_menu_haut("   ",
-			"img/img_menuderoulantdroite.png", ContentDisplay.LEFT, HPos.RIGHT);;
+	private Composant_menu_haut tirets_droite = new Composant_menu_haut("   ", "img/img_menuderoulantdroite.png",
+			ContentDisplay.LEFT, HPos.RIGHT);;
+			
+	private ImageView logoAmazon;
 
 	public Barre_menu_haut() {
 		// -------------------------------------------------------------------------------
@@ -43,12 +45,12 @@ public class Barre_menu_haut extends GridPane {
 				ContentDisplay.LEFT, HPos.CENTER);
 
 		Recup_image recup = new Recup_image("img/img_logo_amazon.png");
-		ImageView img_logo = new ImageView(recup.getImg());
+		this.logoAmazon = new ImageView(recup.getImg());
 
-		img_logo.setFitHeight(45);
-		img_logo.setFitWidth(135);
-		GridPane.setValignment(img_logo, VPos.CENTER);
-		GridPane.setHalignment(img_logo, HPos.CENTER);
+		this.logoAmazon.setFitHeight(45);
+		this.logoAmazon.setFitWidth(135);
+		GridPane.setValignment(this.logoAmazon, VPos.CENTER);
+		GridPane.setHalignment(this.logoAmazon, HPos.CENTER);
 
 		Composant_menu_haut ventes_speciales = new Composant_menu_haut("Ventes spéciales ",
 				"img/img_ventesspeciales.png", ContentDisplay.RIGHT, HPos.CENTER);
@@ -60,7 +62,7 @@ public class Barre_menu_haut extends GridPane {
 		// this.getChildren().addAll(mon_compte, panier, img_logo);
 		this.add(mon_compte, 0, 0);
 //		this.add(panier, 1, 0);
-		this.add(img_logo, 1, 0);
+		this.add(this.logoAmazon, 1, 0);
 		this.add(ventes_speciales, 2, 0);
 		this.add(this.tirets_droite, 3, 0);
 		// this.setGridLinesVisible(true);
@@ -70,9 +72,13 @@ public class Barre_menu_haut extends GridPane {
 		this.setStyle("-fx-background-color: #183152;");
 
 	}
-	
+
 	public Composant_menu_haut getTirets_droite() {
 		return tirets_droite;
+	}
+
+	public ImageView getLogoAmazon() {
+		return logoAmazon;
 	}
 
 }

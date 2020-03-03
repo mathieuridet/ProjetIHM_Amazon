@@ -34,6 +34,8 @@ public abstract class AbstractModel implements Observable {
 
 	// Changement de la vue accueil à la vue produit et vice-versa
 	public abstract void GoVueProduit(Produit p, AbstractControler controler);
+	
+	public abstract void GoVueAccueil(AbstractControler controler);
 
 	// Implementation du pattern observer
 	public void addObserver(Observer obs) {

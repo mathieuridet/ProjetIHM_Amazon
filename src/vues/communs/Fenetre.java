@@ -2,6 +2,7 @@ package vues.communs;
 
 import java.sql.SQLException;
 
+import amazon_projet.Amazon_Projet;
 import controlers.AbstractControler;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
@@ -31,6 +32,6 @@ public class Fenetre implements Observer {
 
 	@Override
 	public void update(GridPane gp) {
-		this.scene = new Scene(gp);
+		Amazon_Projet.getAmazonStage().setScene(new Scene(gp));
 	}
 }
