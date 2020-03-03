@@ -66,8 +66,12 @@ public abstract class AbstractControler {
 		return null;
 	}
 	
-	public void GoVueProduit(Produit p) {
+	public void GoPageProduit(Produit p) {
 		this.model.GoVueProduit(p, this);
+	}
+	
+	public void GoPageAccueil() {
+		this.model.GoVueAccueil(this);
 	}
 
 	// Méthode de contrôle

@@ -5,9 +5,11 @@ import vues.communs.Barre_menu_haut;
 import vues.page_acceuil.Coin_haut_gauche;
 import vues.communs.Menu_droit;
 import vues.communs.Produit;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -48,6 +50,12 @@ public class Page_Produit extends GridPane {
 
 		Barre_menu_haut menu_haut = new Barre_menu_haut();
 		menu_haut.setPadding(new Insets(20, 0, 20, 0));
+
+		menu_haut.getLogoAmazon().setOnMousePressed(new EventHandler<MouseEvent>() {
+			public void handle(MouseEvent me) {
+				controler.GoPageAccueil();
+			}
+		});
 
 		// -------------------------------------------------------------------------------
 		// On met en place le menu du haut de la page

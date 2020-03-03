@@ -10,15 +10,18 @@ import Model.BD_Amazon;
 import Model.Model;
 import controlers.AbstractControler;
 import controlers.Controler;
-import java.sql.SQLException;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import vues.communs.Fenetre;
 
 public class Amazon_Projet extends Application {
 
+	private static Stage AmazonStage;
+
 	@Override
-	public void start(Stage primaryStage) throws SQLException {
+	public void start(Stage primaryStage) {
+
+		AmazonStage = primaryStage;
 		// On setup la BD
 		BD_Amazon.connexionToBd("amazon", "jdbc:mariadb://176.158.51.172:3300/amazon", "jdbcUser", "AmazonIHM");
 
@@ -28,16 +31,16 @@ public class Amazon_Projet extends Application {
 		// Création du contrôleur
 		AbstractControler controler = new Controler(model);
 
+		AmazonStage.setTitle("Amazon");
+
 		// La fenêtre qui voit tout
 		Fenetre fen = new Fenetre(controler);
-		
+
 		model.addObserver(fen);
 
-		primaryStage.setTitle("Amazon");
-		primaryStage.setScene(fen.getScene());
-		primaryStage.setHeight(1250);
-		primaryStage.setWidth(1750);
-		primaryStage.show();
+		AmazonStage.setHeight(1250);
+		AmazonStage.setWidth(1750);
+		AmazonStage.show();
 	}
 
 	/**
@@ -45,5 +48,9 @@ public class Amazon_Projet extends Application {
 	 */
 	public static void main(String[] args) {
 		Application.launch(args);
+	}
+
+	public static Stage getAmazonStage() {
+		return AmazonStage;
 	}
 }

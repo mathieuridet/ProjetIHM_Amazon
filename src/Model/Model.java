@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import controlers.AbstractControler;
 import vues.communs.Produit;
+import vues.page_acceuil.Page_Accueil;
 import vues.page_produit.Page_Produit;
 
 /**
@@ -64,5 +65,14 @@ public class Model extends AbstractModel {
 	@Override
 	public void GoVueProduit(Produit p, AbstractControler controler) {
 		this.notifyObserver(new Page_Produit(p, controler));
+	}
+
+	@Override
+	public void GoVueAccueil(AbstractControler controler) {
+		try {
+			this.notifyObserver(new Page_Accueil(controler));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

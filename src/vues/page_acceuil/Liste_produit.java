@@ -4,9 +4,11 @@ import controlers.AbstractControler;
 import java.sql.SQLException;
 import java.util.List;
 import vues.communs.Produit;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.ColumnConstraints;
@@ -42,6 +44,13 @@ public class Liste_produit extends ScrollPane {
 			productList.getColumnConstraints().add(new ColumnConstraints(200));
 			produit.getImView().setFitHeight(imgSize);
 			produit.getImView().setFitWidth(imgSize);
+			
+			produit.setOnMousePressed(new EventHandler<MouseEvent>() {
+				public void handle(MouseEvent me) {
+					controler.GoPageProduit(produit);
+				}
+			});
+			
 			productList.add(produit, i, 0);
 			i++;
 		}
@@ -95,6 +104,13 @@ public class Liste_produit extends ScrollPane {
 			produitn.getDescription().setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 			produitn.getDescription().setAlignment(Pos.CENTER);
 			produitn.getDescription().setWrapText(true);
+
+			produitn.setOnMousePressed(new EventHandler<MouseEvent>() {
+				public void handle(MouseEvent me) {
+					controler.GoPageProduit(produitn);
+				}
+			});
+
 			productList.add(produitn, i, 0);
 			n++;
 		}

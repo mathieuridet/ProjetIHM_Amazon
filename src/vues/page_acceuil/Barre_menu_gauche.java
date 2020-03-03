@@ -44,7 +44,7 @@ public class Barre_menu_gauche extends BorderPane {
 		for (Produit prod : produits) {
 			prod.setOnMousePressed(new EventHandler<MouseEvent>() {
 				public void handle(MouseEvent me) {
-					controler.GoVueProduit(prod);
+					controler.GoPageProduit(prod);
 				}
 			});
 		}
