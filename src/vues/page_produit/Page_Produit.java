@@ -81,6 +81,18 @@ public class Page_Produit extends GridPane {
 
 		Vue_produit productView = new Vue_produit(prod);
 		infos_produit.add(productView, 0, 0);
+
+		productView.getAddProduct().setOnMousePressed(new EventHandler<MouseEvent>() {
+			public void handle(MouseEvent me) {
+				controler.GoPageAccueil();
+			}
+		});
+		productView.getNotAddProduct().setOnMousePressed(new EventHandler<MouseEvent>() {
+			public void handle(MouseEvent me) {
+				controler.GoPageAccueil();
+			}
+		});
+
 		Suggestions suggest = new Suggestions(controler);
 		infos_produit.add(suggest, 0, 1);
 		Commentaires coms = new Commentaires();
