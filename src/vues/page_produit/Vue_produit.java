@@ -5,6 +5,8 @@ import vues.communs.Produit;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
@@ -15,6 +17,7 @@ import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
@@ -24,6 +27,9 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 
 public class Vue_produit extends GridPane {
+
+	private Button addProduct = new Button();
+	private Button notAddProduct = new Button();
 
 	public Vue_produit(Produit prod) {
 		// Partie relative aux principales informations et visuels du produit
@@ -47,19 +53,45 @@ public class Vue_produit extends GridPane {
 
 		// -------------------------------------------------------------------------------
 		// 1ère partie en partant de la gauche
+		this.addProduct.setText("Je prends !");
+		this.addProduct.setFont(Font.font("Comic sans MS", FontWeight.NORMAL, 15));
+		this.addProduct.setGraphic(new ImageView(new Recup_image("img/plus.png").getImg()));
+		this.addProduct.setContentDisplay(ContentDisplay.TOP);
+		this.addProduct.setBackground(Background.EMPTY);
+
+		this.notAddProduct.setText("Non merci.");
+		this.notAddProduct.setFont(Font.font("Comic sans MS", FontWeight.NORMAL, 15));
+		this.notAddProduct.setGraphic(new ImageView(new Recup_image("img/croix.png").getImg()));
+		this.notAddProduct.setContentDisplay(ContentDisplay.TOP);
+		this.notAddProduct.setBackground(Background.EMPTY);
+
+		HBox conteneur_boutons = new HBox();
+		HBox.setHgrow(this.addProduct, Priority.ALWAYS);
+		HBox.setHgrow(this.notAddProduct, Priority.ALWAYS);
+		conteneur_boutons.setAlignment(Pos.TOP_CENTER);
+		HBox.setMargin(this.addProduct, new Insets(5, 30, 5, 30));
+		HBox.setMargin(this.notAddProduct, new Insets(5, 30, 5, 30));
+		conteneur_boutons.getChildren().addAll(this.addProduct, this.notAddProduct);
+
 		Label choix_options = new Label("Choix des options");
 		choix_options
 				.setBackground(new Background(new BackgroundFill(Color.LIGHTGRAY, CornerRadii.EMPTY, Insets.EMPTY)));
 		choix_options.setWrapText(true);
-		choix_options.setMaxSize(400, 400);
+		choix_options.setMaxSize(400, 300);
 		choix_options.setFont(Font.font("Arial", FontWeight.NORMAL, 40));
 		choix_options.setBorder(
 				new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, new CornerRadii(5), null)));
 		choix_options.setAlignment(Pos.CENTER);
 		choix_options.setTextAlignment(TextAlignment.CENTER);
-		GridPane.setHalignment(choix_options, HPos.CENTER);
 
-		this.add(choix_options, 0, 0);
+		VBox conteneur_vertical = new VBox();
+		VBox.setVgrow(choix_options, Priority.ALWAYS);
+		VBox.setMargin(choix_options, new Insets(5, 0, 30, 0));
+		conteneur_vertical.setAlignment(Pos.CENTER);
+		conteneur_vertical.getChildren().addAll(conteneur_boutons, choix_options);
+		GridPane.setHalignment(conteneur_vertical, HPos.CENTER);
+
+		this.add(conteneur_vertical, 0, 0);
 
 		// -------------------------------------------------------------------------------
 		// 2e partie
@@ -116,6 +148,14 @@ public class Vue_produit extends GridPane {
 		this.add(infos, 3, 0);
 
 		// this.setGridLinesVisible(true);
+	}
+
+	public Button getAddProduct() {
+		return addProduct;
+	}
+
+	public Button getNotAddProduct() {
+		return notAddProduct;
 	}
 
 }
