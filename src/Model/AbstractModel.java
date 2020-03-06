@@ -31,7 +31,12 @@ public abstract class AbstractModel implements Observable {
 	public abstract ResultSet selectPrixProductInACommand(int IDCommande);
 
 	public abstract ResultSet selectDateLivraisonCommand(int IDCommande);
+	
+	// Ajout d'un produit à une commande 
+	public abstract void insertProductInACommand(Produit p, int IDCommande);
 
+	public abstract void updateProductInACommand(Produit p, int IDCommande);
+	
 	// Changement de la vue accueil à la vue produit et vice-versa
 	public abstract void GoVueProduit(Produit p, AbstractControler controler);
 	

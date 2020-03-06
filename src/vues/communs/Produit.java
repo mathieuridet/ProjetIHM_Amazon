@@ -89,4 +89,11 @@ public class Produit extends VBox {
 	public Label getDescription() {
 		return this.description;
 	}
+
+	public boolean equals(Produit prod) {
+		if (this.getIdProduct() == prod.getIdProduct())
+			return true;
+		else 
+			return false;
+	}
 }

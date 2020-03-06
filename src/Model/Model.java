@@ -63,6 +63,26 @@ public class Model extends AbstractModel {
 	}
 
 	@Override
+	public void insertProductInACommand(Produit p, int IDCommande) {
+		try {
+			BD_Amazon.execute_insertOrUpdate("INSERT INTO Achat (ID_Commande, ID_Produit, Qte_Produit) " + "VALUES ("
+					+ IDCommande + ", " + p.getIdProduct() + ", 1)");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void updateProductInACommand(Produit p, int IDCommande) {
+		try {
+			BD_Amazon.execute_insertOrUpdate("UPDATE Achat " + "SET Qte_Produit = Qte_Produit+1 "
+					+ "WHERE ID_Commande = " + IDCommande + " AND ID_Produit = " + p.getIdProduct());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
 	public void GoVueProduit(Produit p, AbstractControler controler) {
 		this.notifyObserver(new Page_Produit(p, controler));
 	}

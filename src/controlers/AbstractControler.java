@@ -22,6 +22,8 @@ import vues.communs.Produit;
 public abstract class AbstractControler {
 
 	protected AbstractModel model;
+	protected boolean ajoutPanier = false;
+	protected int idCommande = 2;
 
 	public AbstractControler(AbstractModel model) {
 		this.model = model;
@@ -65,16 +67,33 @@ public abstract class AbstractControler {
 		}
 		return null;
 	}
-	
+
 	public void GoPageProduit(Produit p) {
 		this.model.GoVueProduit(p, this);
 	}
-	
+
 	public void GoPageAccueil() {
 		this.model.GoVueAccueil(this);
 	}
 
+	public boolean isAjoutPanier() {
+		return this.ajoutPanier;
+	}
+
+	public void setAjoutPanier(boolean ajoutPanier, Produit p) {
+		this.ajoutPanier = ajoutPanier;
+		control(p);
+	}
+
+	public int getIdCommande() {
+		return this.idCommande;
+	}
+
+	public void setIdCommande(int id) {
+		this.idCommande = id;
+	}
+
 	// Méthode de contrôle
-	abstract void control();
+	abstract void control(Produit p);
 
 }
