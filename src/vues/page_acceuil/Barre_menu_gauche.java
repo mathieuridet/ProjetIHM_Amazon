@@ -31,7 +31,6 @@ public class Barre_menu_gauche extends BorderPane {
 	private AbstractControler controler;
 
 	// Pour l'instant on va choisir manuellement l'id de la commande qu'on veut
-	private int tmpIdCommande = 2;
 
 	public Barre_menu_gauche(AbstractControler controler) throws SQLException {
 		this.controler = controler;
@@ -40,7 +39,7 @@ public class Barre_menu_gauche extends BorderPane {
 		// menu_haut.setTranslateX(menu_gauche.getWidth());
 
 		// On récupère les articles constituant la commande d'ID 1 dans la BD
-		List<Produit> produits = this.controler.getProductsByCommand(this.tmpIdCommande);
+		List<Produit> produits = this.controler.getProductsByCommand(this.controler.getIdCommande());
 		for (Produit prod : produits) {
 			prod.setOnMousePressed(new EventHandler<MouseEvent>() {
 				public void handle(MouseEvent me) {
@@ -56,7 +55,8 @@ public class Barre_menu_gauche extends BorderPane {
 		articles_commande.setStyle("-fx-control-inner-background: #183152; -fx-background-insets: 0; -fx-padding: 0;");
 
 		// Prix et date livraison de la commande d'ID 1
-		Label prix_commande = new Label("Total = " + this.controler.getPrixTotalCommande(this.tmpIdCommande));
+		Label prix_commande = new Label(
+				"Total = " + this.controler.getPrixTotalCommande(this.controler.getIdCommande()));
 		prix_commande.setFont(new Font("Comic sans MS", 20));
 		prix_commande.setStyle("-fx-font-weight: bold");
 		prix_commande.setTextFill(Color.ORANGE);
@@ -64,7 +64,7 @@ public class Barre_menu_gauche extends BorderPane {
 		prix_commande.setTextAlignment(TextAlignment.CENTER);
 		prix_commande.setPadding(new Insets(10));
 		Label datelivraison_commande = new Label(
-				"Livraison prévue le\n" + this.controler.getDateLivraisonCommand(this.tmpIdCommande));
+				"Livraison prévue le\n" + this.controler.getDateLivraisonCommand(this.controler.getIdCommande()));
 		datelivraison_commande.setFont(new Font("Comic sans MS", 20));
 		datelivraison_commande.setStyle("-fx-font-weight: bold");
 		datelivraison_commande.setTextFill(Color.WHITE);

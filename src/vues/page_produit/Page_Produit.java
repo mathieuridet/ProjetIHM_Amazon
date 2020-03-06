@@ -84,6 +84,7 @@ public class Page_Produit extends GridPane {
 
 		productView.getAddProduct().setOnMousePressed(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent me) {
+				controler.setAjoutPanier(true, prod);
 				controler.GoPageAccueil();
 			}
 		});
