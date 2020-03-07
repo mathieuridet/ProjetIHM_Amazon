@@ -3,6 +3,8 @@ package vues.page_acceuil;
 import amazon_projet.Recup_image;
 import controlers.AbstractControler;
 import java.sql.SQLException;
+import java.util.Random;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -20,6 +22,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class Contenu_accueil extends VBox {
+
+	private String chosenCategorie = "";
 
 	public Contenu_accueil(AbstractControler controler) throws SQLException {
 		this.setAlignment(Pos.TOP_CENTER);
@@ -61,16 +65,31 @@ public class Contenu_accueil extends VBox {
 		Contenu_accueil.setMargin(barre_du_milieu, new Insets(15, 0, 0, 0));
 
 		// -------------------------------------------------------------------------------
-		// Partie produits
-		Liste_produit propositions1 = new Liste_produit(75, 20, controler);
-		Contenu_accueil.setMargin(propositions1, new Insets(15, 0, 0, 0));
-		VBox.setVgrow(propositions1, Priority.ALWAYS);
-		Liste_produit propositions2 = new Liste_produit(75, 20, controler);
-		Contenu_accueil.setMargin(propositions2, new Insets(15, 0, 0, 0));
-		VBox.setVgrow(propositions2, Priority.ALWAYS);
+		// On génère aléatoirement une catégorie pour afficher des produits différents
+		Random rand = new Random();
+		int randomIndex = rand.nextInt(controler.getCategories().size());
+		this.chosenCategorie = controler.getCategories().get(randomIndex);
 
-		this.getChildren().addAll(propositions1, propositions2);
+		// -------------------------------------------------------------------------------
+		// Partie produits
+		Liste_produit selections = new Liste_produit(75, 20, controler, this.chosenCategorie, true);
+		Contenu_accueil.setMargin(selections, new Insets(15, 0, 0, 0));
+		VBox.setVgrow(selections, Priority.ALWAYS);
+
+		Liste_produit propositions = new Liste_produit(75, 20, controler, this.chosenCategorie, false);
+		Contenu_accueil.setMargin(propositions, new Insets(15, 0, 0, 0));
+		VBox.setVgrow(propositions, Priority.ALWAYS);
+
+		this.getChildren().addAll(selections, propositions);
 
 		this.setPrefWidth(1500);
+	}
+
+	public String getChosenCategorie() {
+		return chosenCategorie;
+	}
+
+	public void setChosenCategorie(String chosenCategorie) {
+		this.chosenCategorie = chosenCategorie;
 	}
 }

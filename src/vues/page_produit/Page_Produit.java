@@ -43,6 +43,12 @@ public class Page_Produit extends GridPane {
 
 		Coin_haut_gauche coin_panier = new Coin_haut_gauche();
 		coin_panier.setMaxWidth(270);
+		coin_panier.setOnMousePressed(new EventHandler<MouseEvent>() {
+			public void handle(MouseEvent me) {
+				controler.setMajFromPanier(true);
+				controler.GoPageAccueil();
+			}
+		});
 
 		// -------------------------------------------------------------------------------
 		// Partie relative au menu en haut (et à droite)
@@ -50,9 +56,9 @@ public class Page_Produit extends GridPane {
 
 		Barre_menu_haut menu_haut = new Barre_menu_haut();
 		menu_haut.setPadding(new Insets(20, 0, 20, 0));
-
 		menu_haut.getLogoAmazon().setOnMousePressed(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent me) {
+				controler.setMajFromPanier(false);
 				controler.GoPageAccueil();
 			}
 		});
@@ -84,8 +90,8 @@ public class Page_Produit extends GridPane {
 
 		productView.getAddProduct().setOnMousePressed(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent me) {
+				controler.setMajFromPanier(false);
 				controler.setAjoutPanier(true, prod);
-				controler.GoPageAccueil();
 			}
 		});
 		productView.getNotAddProduct().setOnMousePressed(new EventHandler<MouseEvent>() {
@@ -94,7 +100,7 @@ public class Page_Produit extends GridPane {
 			}
 		});
 
-		Suggestions suggest = new Suggestions(controler);
+		Suggestions suggest = new Suggestions(prod, controler);
 		infos_produit.add(suggest, 0, 1);
 		Commentaires coms = new Commentaires();
 		infos_produit.add(coms, 0, 2);

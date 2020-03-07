@@ -13,6 +13,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+
 import vues.communs.Produit;
 
 /**
@@ -23,10 +24,18 @@ public abstract class AbstractControler {
 
 	protected AbstractModel model;
 	protected boolean ajoutPanier = false;
-	protected int idCommande = 2;
+	protected boolean majFromPanier = false;
+	protected boolean removeProdFromPanier = false;
+	protected int idCommande = 0;
+	protected List<String> categories = new ArrayList<String>();
 
-	public AbstractControler(AbstractModel model) {
+	public AbstractControler(AbstractModel model) throws SQLException {
 		this.model = model;
+		this.idCommande = getIdCommandeEnCours();
+		ResultSet rs = this.model.selectAllCategories();
+		while (rs.next()) {
+			categories.add(rs.getString("Categorie"));
+		}
 	}
 
 	public List<Produit> getProductsByCommand(int idCommande) throws SQLException {
@@ -34,19 +43,19 @@ public abstract class AbstractControler {
 		ResultSet rs = this.model.selectProductInCommand(idCommande);
 		while (rs.next()) {
 			produits.add(new Produit(rs.getInt("ID"), rs.getString("Image_Produit"), rs.getString("Libelle"),
-					rs.getString("Prix"), rs.getString("Description")));
+					rs.getString("Prix"), rs.getString("Description"), rs.getString("Categorie")));
 		}
 		return produits;
 	}
 
-	public String getPrixTotalCommande(int idCommande) throws SQLException {
+	public float getPrixTotalCommande(int idCommande) throws SQLException {
 		ResultSet rs = this.model.selectPrixProductInACommand(idCommande);
 		float total = 0f;
 		while (rs.next()) {
 			total += (rs.getFloat("Prix") * rs.getInt("Qte_Produit"));
 		}
 		total = (float) Math.round(total * 100) / 100;
-		return String.valueOf(total);
+		return total;
 	}
 
 	public List<Produit> getProductsByCategory(String cat) throws SQLException {
@@ -54,7 +63,7 @@ public abstract class AbstractControler {
 		ResultSet rs = this.model.selectProductByCategory(cat);
 		while (rs.next()) {
 			produits.add(new Produit(rs.getInt("ID"), rs.getString("Image_Produit"), rs.getString("Libelle"),
-					rs.getString("Prix"), rs.getString("Description")));
+					rs.getString("Prix"), rs.getString("Description"), rs.getString("Categorie")));
 		}
 		return produits;
 	}
@@ -66,6 +75,30 @@ public abstract class AbstractControler {
 			return df.format(rs.getDate("DateLivraison"));
 		}
 		return null;
+	}
+
+	public int getQteProductInCommand(Produit p, int idCommande) throws SQLException {
+		ResultSet rs = this.model.selectQteProductInACommand(p, idCommande);
+		if (rs.next()) {
+			return rs.getInt("Qte_Produit");
+		}
+		return 0;
+	}
+
+	public int getIdCommandeEnCours() throws SQLException {
+		ResultSet rs = this.model.selectIdCommandeEnCours();
+		if (rs.next()) {
+			return rs.getInt("ID");
+		}
+		return 0;
+	}
+
+	public boolean getStatutActualCommande() throws SQLException {
+		ResultSet rs = this.model.selectIdCommandeEnCours();
+		if (rs.next()) {
+			return rs.getBoolean("Statut");
+		}
+		return false;
 	}
 
 	public void GoPageProduit(Produit p) {
@@ -85,12 +118,29 @@ public abstract class AbstractControler {
 		control(p);
 	}
 
+	public boolean isMajFromPanier() {
+		return this.majFromPanier;
+	}
+
+	public void setMajFromPanier(boolean fromPanier) {
+		this.majFromPanier = fromPanier;
+	}
+
+	public boolean isRemoveProdFromPanier() {
+		return removeProdFromPanier;
+	}
+
+	public void setRemoveProdFromPanier(boolean removeProdFromPanier, Produit p) {
+		this.removeProdFromPanier = removeProdFromPanier;
+		control(p);
+	}
+
 	public int getIdCommande() {
 		return this.idCommande;
 	}
 
-	public void setIdCommande(int id) {
-		this.idCommande = id;
+	public List<String> getCategories() {
+		return categories;
 	}
 
 	// Méthode de contrôle
