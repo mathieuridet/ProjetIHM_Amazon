@@ -4,13 +4,17 @@ import controlers.AbstractControler;
 import java.sql.SQLException;
 import vues.communs.Barre_menu_haut;
 import vues.communs.Menu_droit;
+import javafx.event.EventHandler;
 import javafx.geometry.HPos;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.RowConstraints;
 
 public class Page_Accueil extends GridPane {
+
+	private Barre_menu_gauche menu_gauche;
 
 	public Page_Accueil(AbstractControler controler) throws SQLException {
 		// this.setGridLinesVisible(true);
@@ -50,7 +54,20 @@ public class Page_Accueil extends GridPane {
 		// Partie relative au menu à gauche (et en bas)
 		// -------------------------------------------------------------------------------
 
-		Barre_menu_gauche menu_gauche = new Barre_menu_gauche(controler);
+		this.menu_gauche = new Barre_menu_gauche(controler);
+		coin_panier.setOnMousePressed(new EventHandler<MouseEvent>() {
+			public void handle(MouseEvent me) {
+				if (menu_gauche.isInfos_panier_visible()) {
+					menu_gauche.setInfos_panier_visible(false);
+					menu_gauche.getInformations().setVisible(false);
+					menu_gauche.getInformations().setManaged(false);
+				} else {
+					menu_gauche.setInfos_panier_visible(true);
+					menu_gauche.getInformations().setVisible(true);
+					menu_gauche.getInformations().setManaged(true);
+				}
+			}
+		});
 
 		// -------------------------------------------------------------------------------
 		// Partie relative au centre de la page
@@ -73,8 +90,16 @@ public class Page_Accueil extends GridPane {
 
 		this.add(coin_panier, 0, 0);
 		this.add(menu_haut, 1, 0);
-		this.add(menu_gauche, 0, 1);
+		this.add(this.menu_gauche, 0, 1);
 		this.add(contenant_central, 1, 1);
+	}
+
+	public Barre_menu_gauche getMenu_gauche() {
+		return menu_gauche;
+	}
+
+	public void setMenu_gauche(Barre_menu_gauche menu_gauche) {
+		this.menu_gauche = menu_gauche;
 	}
 
 	/*

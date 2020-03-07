@@ -28,8 +28,9 @@ public class Produit extends VBox {
 	private ImageView imView;
 	private Label prix;
 	private Label description;
+	private String categorieProduct;
 
-	public Produit(int id, String img, String nomArticle, String price, String txt) {
+	public Produit(int id, String img, String nomArticle, String price, String txt, String categorie) {
 
 		this.idProduct = id;
 		this.article = new Label(nomArticle);
@@ -41,6 +42,7 @@ public class Produit extends VBox {
 		this.article.setContentDisplay(ContentDisplay.TOP);
 		this.prix = new Label(price);
 		this.description = new Label(txt);
+		this.categorieProduct = categorie;
 		VBox.setMargin(this.description, new Insets(2, 2, 2, 2));
 		VBox.setMargin(this.prix, new Insets(2, 2, 2, 2));
 		VBox.setMargin(this.article, new Insets(2, 2, 2, 2));
@@ -90,10 +92,14 @@ public class Produit extends VBox {
 		return this.description;
 	}
 
+	public String getCategorieProduct() {
+		return categorieProduct;
+	}
+
 	public boolean equals(Produit prod) {
 		if (this.getIdProduct() == prod.getIdProduct())
 			return true;
-		else 
+		else
 			return false;
 	}
 }

@@ -5,6 +5,8 @@
  */
 package amazon_projet;
 
+import java.sql.SQLException;
+
 import Model.AbstractModel;
 import Model.BD_Amazon;
 import Model.Model;
@@ -19,7 +21,7 @@ public class Amazon_Projet extends Application {
 	private static Stage AmazonStage;
 
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage) throws SQLException {
 
 		AmazonStage = primaryStage;
 		// On setup la BD

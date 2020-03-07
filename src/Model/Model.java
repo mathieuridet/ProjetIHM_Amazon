@@ -34,7 +34,7 @@ public class Model extends AbstractModel {
 	@Override
 	public ResultSet selectProductByCategory(String cat) {
 		try {
-			return BD_Amazon.execute_select("SELECT * " + "FROM Produit " + "WHERE categorie = '" + cat + "'");
+			return BD_Amazon.execute_select("SELECT * " + "FROM Produit " + "WHERE Categorie = '" + cat + "'");
 		} catch (SQLException ex) {
 			Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
 		}
@@ -63,6 +63,46 @@ public class Model extends AbstractModel {
 	}
 
 	@Override
+	public ResultSet selectQteProductInACommand(Produit p, int IDCommande) {
+		try {
+			return BD_Amazon.execute_select("SELECT Qte_Produit " + "FROM Achat " + "WHERE ID_Commande = " + IDCommande
+					+ " AND ID_Produit = " + p.getIdProduct());
+		} catch (SQLException ex) {
+			Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		return null;
+	}
+
+	@Override
+	public ResultSet selectIdCommandeEnCours() {
+		try {
+			return BD_Amazon.execute_select("SELECT ID FROM Commande WHERE Statut = 0");
+		} catch (SQLException ex) {
+			Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		return null;
+	}
+
+	public ResultSet selectStatutActualCommande(int IDCommande) {
+		try {
+			return BD_Amazon.execute_select("SELECT Statut FROM Commande WHERE ID = " + IDCommande);
+		} catch (SQLException ex) {
+			Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		return null;
+	}
+
+	@Override
+	public ResultSet selectAllCategories() {
+		try {
+			return BD_Amazon.execute_select("SELECT DISTINCT Categorie FROM Produit");
+		} catch (SQLException ex) {
+			Logger.getLogger(Model.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		return null;
+	}
+
+	@Override
 	public void insertProductInACommand(Produit p, int IDCommande) {
 		try {
 			BD_Amazon.execute_insertOrUpdate("INSERT INTO Achat (ID_Commande, ID_Produit, Qte_Produit) " + "VALUES ("
@@ -73,10 +113,29 @@ public class Model extends AbstractModel {
 	}
 
 	@Override
-	public void updateProductInACommand(Produit p, int IDCommande) {
+	public void updateProductInACommand(Produit p, int IDCommande, boolean add) {
+		if (add) {
+			try {
+				BD_Amazon.execute_insertOrUpdate("UPDATE Achat " + "SET Qte_Produit = Qte_Produit+1"
+						+ " WHERE ID_Commande = " + IDCommande + " AND ID_Produit = " + p.getIdProduct());
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} else {
+			try {
+				BD_Amazon.execute_insertOrUpdate("UPDATE Achat " + "SET Qte_Produit = Qte_Produit-1"
+						+ " WHERE ID_Commande = " + IDCommande + " AND ID_Produit = " + p.getIdProduct());
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	@Override
+	public void deleteProductInACommand(Produit p, int IDCommande) {
 		try {
-			BD_Amazon.execute_insertOrUpdate("UPDATE Achat " + "SET Qte_Produit = Qte_Produit+1 "
-					+ "WHERE ID_Commande = " + IDCommande + " AND ID_Produit = " + p.getIdProduct());
+			BD_Amazon.execute_insertOrUpdate("DELETE FROM Achat " + "WHERE ID_Commande = " + IDCommande
+					+ " AND ID_Produit = " + p.getIdProduct());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

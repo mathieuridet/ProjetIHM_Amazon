@@ -1,6 +1,9 @@
 package vues.page_produit;
 
+import java.sql.SQLException;
+
 import controlers.AbstractControler;
+import vues.communs.Produit;
 import vues.page_acceuil.Liste_produit;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -22,7 +25,7 @@ import javafx.scene.text.TextAlignment;
 
 public class Suggestions extends GridPane {
 
-	public Suggestions(AbstractControler controler) {
+	public Suggestions(Produit prod, AbstractControler controler) {
 		// partie relative aux suggestions du site en adéquation avec le produit
 
 		// Une unique ligne qui fait 100% de la zone couverte
@@ -49,14 +52,18 @@ public class Suggestions extends GridPane {
 		proposition.setAlignment(Pos.CENTER);
 		proposition.setTextAlignment(TextAlignment.CENTER);
 		GridPane.setHalignment(proposition, HPos.CENTER);
-		
+
 		this.add(proposition, 0, 0);
 
 		// -------------------------------------------------------------------------------
 		// 2e partie
-		Liste_produit recommandations = new Liste_produit(150, 90, 40, 30, 15, controler);
-		
-		this.add(recommandations, 1, 0);
+		Liste_produit recommandations;
+		try {
+			recommandations = new Liste_produit(150, 90, 40, 30, 15, controler, prod);
+			this.add(recommandations, 1, 0);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
 		// this.setGridLinesVisible(true);
 	}

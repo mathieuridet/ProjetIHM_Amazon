@@ -32,10 +32,20 @@ public abstract class AbstractModel implements Observable {
 
 	public abstract ResultSet selectDateLivraisonCommand(int IDCommande);
 	
+	public abstract ResultSet selectQteProductInACommand(Produit p, int IDCommande);
+	
+	public abstract ResultSet selectIdCommandeEnCours();
+	
+	public abstract ResultSet selectStatutActualCommande(int IDCommande);
+	
+	public abstract ResultSet selectAllCategories();
+	
 	// Ajout d'un produit à une commande 
 	public abstract void insertProductInACommand(Produit p, int IDCommande);
 
-	public abstract void updateProductInACommand(Produit p, int IDCommande);
+	public abstract void updateProductInACommand(Produit p, int IDCommande, boolean add);
+	
+	public abstract void deleteProductInACommand(Produit p, int IDCommande);
 	
 	// Changement de la vue accueil à la vue produit et vice-versa
 	public abstract void GoVueProduit(Produit p, AbstractControler controler);
@@ -54,7 +64,7 @@ public abstract class AbstractModel implements Observable {
 	}
 
 	public void removeObserver() {
-		listObserver = new ArrayList<Observer>();
+		this.listObserver = new ArrayList<Observer>();
 	}
 
 }
