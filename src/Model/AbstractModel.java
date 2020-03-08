@@ -40,12 +40,14 @@ public abstract class AbstractModel implements Observable {
 	
 	public abstract ResultSet selectAllCategories();
 	
-	// Ajout d'un produit à une commande 
+	// Actions sur les produits et les commandes 
 	public abstract void insertProductInACommand(Produit p, int IDCommande);
 
 	public abstract void updateProductInACommand(Produit p, int IDCommande, boolean add);
 	
 	public abstract void deleteProductInACommand(Produit p, int IDCommande);
+	
+	public abstract void endCommandAndCreateANewOne(int IDCommande);
 	
 	// Changement de la vue accueil à la vue produit et vice-versa
 	public abstract void GoVueProduit(Produit p, AbstractControler controler);

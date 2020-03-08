@@ -6,14 +6,16 @@
 package controlers;
 
 import Model.AbstractModel;
+import Model.BD_Amazon;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 import vues.communs.Produit;
 
 /**
@@ -36,6 +38,10 @@ public abstract class AbstractControler {
 		while (rs.next()) {
 			categories.add(rs.getString("Categorie"));
 		}
+		String maj = "UPDATE Commande SET DateLivraison = ? WHERE ID = " + this.idCommande;
+		PreparedStatement pstmt = BD_Amazon.conn.prepareStatement(maj);
+		pstmt.setDate(1, java.sql.Date.valueOf((LocalDate.now()).plusDays(3)));
+		pstmt.execute();
 	}
 
 	public List<Produit> getProductsByCommand(int idCommande) throws SQLException {
@@ -99,6 +105,12 @@ public abstract class AbstractControler {
 			return rs.getBoolean("Statut");
 		}
 		return false;
+	}
+
+	public void commandeTerminee() throws SQLException {
+		this.model.endCommandAndCreateANewOne(this.idCommande);
+		this.idCommande = getIdCommandeEnCours();
+		this.model.GoVueAccueil(this);
 	}
 
 	public void GoPageProduit(Produit p) {

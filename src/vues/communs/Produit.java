@@ -55,7 +55,7 @@ public class Produit extends VBox {
 		this.article.setAlignment(Pos.CENTER);
 		this.article.setTextAlignment(TextAlignment.CENTER);
 		this.prix.setFont(new Font("Arial", 25));
-		this.prix.setTextFill(Color.CORAL);
+		this.prix.setTextFill(Color.ORANGE);
 		this.prix.setWrapText(true);
 		this.prix.setMaxWidth(100);
 		this.prix.setAlignment(Pos.CENTER);

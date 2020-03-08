@@ -24,6 +24,8 @@ import vues.communs.Produit;
 
 public class InfosCommandes extends VBox {
 
+	private int nbreProdPanier = 0;
+
 	public InfosCommandes(AbstractControler controler) {
 		try {
 			// On récupère l'ID de la commande en cours
@@ -35,10 +37,11 @@ public class InfosCommandes extends VBox {
 			commande.setTextAlignment(TextAlignment.CENTER);
 			commande.setPadding(new Insets(10));
 			this.getChildren().add(commande);
-			
+
 			// Détails des quantités des produits commandés
 			for (Produit prod : controler.getProductsByCommand(controler.getIdCommande())) {
 				int qteProd = controler.getQteProductInCommand(prod, controler.getIdCommande());
+				this.nbreProdPanier += qteProd;
 
 				Button removeProduct = new Button();
 				removeProduct.setText("-");
@@ -100,7 +103,7 @@ public class InfosCommandes extends VBox {
 			datelivraison_commande.setWrapText(true);
 			datelivraison_commande.setTextAlignment(TextAlignment.CENTER);
 			datelivraison_commande.setPadding(new Insets(10));
-			
+
 			// Bouton pour passer la commande
 			Button passer_commande = new Button();
 			passer_commande.setText("Commander");
@@ -108,12 +111,24 @@ public class InfosCommandes extends VBox {
 			VBox.setMargin(passer_commande, new Insets(15));
 			passer_commande.setOnMousePressed(new EventHandler<MouseEvent>() {
 				public void handle(MouseEvent me) {
-					
+					try {
+						controler.commandeTerminee();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 				}
 			});
 			
-			this.getChildren().addAll(prix_commande, datelivraison_commande, passer_commande);
+			if (this.nbreProdPanier == 0) {
+				passer_commande.setVisible(false);
+				passer_commande.setManaged(false);
+			} else {
+				passer_commande.setVisible(true);
+				passer_commande.setManaged(true);
+			}
 			
+			this.getChildren().addAll(prix_commande, datelivraison_commande, passer_commande);
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -129,5 +144,9 @@ public class InfosCommandes extends VBox {
 			this.setManaged(false);
 		}
 
+	}
+
+	public int getNbreProdPanier() {
+		return nbreProdPanier;
 	}
 }
