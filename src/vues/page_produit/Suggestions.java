@@ -3,8 +3,8 @@ package vues.page_produit;
 import java.sql.SQLException;
 
 import controlers.AbstractControler;
+import vues.communs.Liste_produit;
 import vues.communs.Produit;
-import vues.page_acceuil.Liste_produit;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -59,7 +59,7 @@ public class Suggestions extends GridPane {
 		// 2e partie
 		Liste_produit recommandations;
 		try {
-			recommandations = new Liste_produit(150, 90, 40, 30, 15, controler, prod);
+			recommandations = new Liste_produit(150, 90, 30, 20, 15, controler, prod);
 			this.add(recommandations, 1, 0);
 		} catch (SQLException e) {
 			e.printStackTrace();
