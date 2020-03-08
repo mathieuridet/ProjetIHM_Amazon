@@ -5,8 +5,10 @@
  */
 package Model;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import controlers.AbstractControler;
@@ -136,6 +138,21 @@ public class Model extends AbstractModel {
 		try {
 			BD_Amazon.execute_insertOrUpdate("DELETE FROM Achat " + "WHERE ID_Commande = " + IDCommande
 					+ " AND ID_Produit = " + p.getIdProduct());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void endCommandAndCreateANewOne(int IDCommande) {
+		String endCommande = "UPDATE Commande SET Statut = 1 WHERE ID = " + IDCommande;
+		LocalDate dateDeLivraison = LocalDate.now();
+		String createANewOne = "INSERT INTO Commande (Statut, DateLivraison) " + "VALUES (0, ?)";
+		try {
+			BD_Amazon.execute_insertOrUpdate(endCommande);
+			PreparedStatement pstmt = BD_Amazon.conn.prepareStatement(createANewOne);
+			pstmt.setDate(1, java.sql.Date.valueOf(dateDeLivraison.plusDays(3)));
+			pstmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

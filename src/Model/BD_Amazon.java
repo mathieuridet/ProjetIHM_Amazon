@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class BD_Amazon {
     
-    static Connection conn;
+	public static Connection conn;
     
     public static void connexionToBd(String nom, String url, String username, String pwd) {
         try {
