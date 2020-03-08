@@ -123,24 +123,30 @@ public class Vue_produit extends GridPane {
 		VBox infos = new VBox();
 		infos.setAlignment(Pos.CENTER);
 		infos.setPadding(new Insets(50));
+		infos.setAlignment(Pos.CENTER);
 
 		Label titre = new Label(prod.getArticle().getText());
 		titre.setFont(Font.font("Arial", FontWeight.BOLD, 50));
+		titre.setWrapText(true);
 		titre.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 		titre.setAlignment(Pos.CENTER);
+		titre.setTextAlignment(TextAlignment.CENTER);
 		VBox.setVgrow(titre, Priority.ALWAYS);
 
 		Label valeur = prod.getPrix();
 		valeur.setFont(Font.font("Arial", FontWeight.BOLD, 40));
+		valeur.setWrapText(true);
 		valeur.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 		valeur.setAlignment(Pos.CENTER);
+		valeur.setTextAlignment(TextAlignment.CENTER);
 		VBox.setVgrow(valeur, Priority.ALWAYS);
 
 		Label details = prod.getDescription();
 		details.setFont(Font.font("Arial", 20));
+		details.setWrapText(true);
 		details.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 		details.setAlignment(Pos.CENTER);
-		details.setWrapText(true);
+		details.setTextAlignment(TextAlignment.CENTER);
 		VBox.setVgrow(details, Priority.ALWAYS);
 
 		infos.getChildren().addAll(titre, valeur, details);
