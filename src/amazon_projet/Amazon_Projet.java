@@ -6,7 +6,6 @@
 package amazon_projet;
 
 import java.sql.SQLException;
-
 import Model.AbstractModel;
 import Model.BD_Amazon;
 import Model.Model;

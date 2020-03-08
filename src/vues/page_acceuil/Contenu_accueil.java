@@ -4,7 +4,6 @@ import amazon_projet.Recup_image;
 import controlers.AbstractControler;
 import java.sql.SQLException;
 import java.util.Random;
-
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;

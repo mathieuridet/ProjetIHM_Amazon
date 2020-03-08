@@ -96,11 +96,8 @@ public class Vue_produit extends GridPane {
 		// -------------------------------------------------------------------------------
 		// 2e partie
 		VBox vues = new VBox();
-		for (int j = 1; j <= 4; j++) {
-			int n = j;
-			if (j > 3)
-				n = j - 2;
-			Recup_image recup = new Recup_image("img/img_product" + n + ".png");
+		for (int i = 1; i <= 4; i++) {
+			Recup_image recup = new Recup_image(prod.getImgPath());
 			ImageView vuei = new ImageView(recup.getImg());
 			VBox.setMargin(vuei, new Insets(20, 0, 20, 0));
 			vues.getChildren().add(vuei);
