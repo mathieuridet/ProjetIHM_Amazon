@@ -25,6 +25,7 @@ public class Produit extends VBox {
 
 	private int idProduct;
 	private Label article;
+	private String imgPath;
 	private ImageView imView;
 	private Label prix;
 	private Label description;
@@ -34,7 +35,8 @@ public class Produit extends VBox {
 
 		this.idProduct = id;
 		this.article = new Label(nomArticle);
-		Recup_image recup = new Recup_image(img);
+		this.imgPath = img;
+		Recup_image recup = new Recup_image(this.imgPath);
 		this.imView = new ImageView(recup.getImg());
 		this.imView.setFitHeight(80);
 		this.imView.setFitWidth(80);
@@ -101,5 +103,9 @@ public class Produit extends VBox {
 			return true;
 		else
 			return false;
+	}
+
+	public String getImgPath() {
+		return imgPath;
 	}
 }
