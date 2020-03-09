@@ -30,6 +30,7 @@ public abstract class AbstractControler {
 	protected boolean removeProdFromPanier = false;
 	protected int idCommande = 0;
 	protected List<String> categories = new ArrayList<String>();
+	private boolean selectionCategorie;
 
 	public AbstractControler(AbstractModel model) throws SQLException {
 		this.model = model;
@@ -42,6 +43,7 @@ public abstract class AbstractControler {
 		PreparedStatement pstmt = BD_Amazon.conn.prepareStatement(maj);
 		pstmt.setDate(1, java.sql.Date.valueOf((LocalDate.now()).plusDays(3)));
 		pstmt.execute();
+		this.selectionCategorie = false;
 	}
 
 	public List<Produit> getProductsByCommand(int idCommande) throws SQLException {
@@ -110,7 +112,7 @@ public abstract class AbstractControler {
 	public void commandeTerminee() throws SQLException {
 		this.model.endCommandAndCreateANewOne(this.idCommande);
 		this.idCommande = getIdCommandeEnCours();
-		this.model.GoVueAccueil(this, "");
+		this.model.GoVueAccueil(this, "", true, "");
 	}
 
 	public void GoPageProduit(Produit p) {
@@ -118,7 +120,11 @@ public abstract class AbstractControler {
 	}
 
 	public void GoPageAccueil(String categorie) {
-		this.model.GoVueAccueil(this, categorie);
+		this.model.GoVueAccueil(this, categorie, true, "");
+	}
+
+	public void GoPageAccueil(String categorie, boolean first, String rechercheTextuelle) {
+		this.model.GoVueAccueil(this, categorie, first, rechercheTextuelle);
 	}
 
 	public boolean isAjoutPanier() {
@@ -153,6 +159,14 @@ public abstract class AbstractControler {
 
 	public List<String> getCategories() {
 		return categories;
+	}
+	
+	public boolean isSelectionCategorie() {
+		return selectionCategorie;
+	}
+
+	public void setSelectionCategorie(boolean selectionCategorie) {
+		this.selectionCategorie = selectionCategorie;
 	}
 
 	// Méthode de contrôle

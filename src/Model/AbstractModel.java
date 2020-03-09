@@ -31,28 +31,29 @@ public abstract class AbstractModel implements Observable {
 	public abstract ResultSet selectPrixProductInACommand(int IDCommande);
 
 	public abstract ResultSet selectDateLivraisonCommand(int IDCommande);
-	
+
 	public abstract ResultSet selectQteProductInACommand(Produit p, int IDCommande);
-	
+
 	public abstract ResultSet selectIdCommandeEnCours();
-	
+
 	public abstract ResultSet selectStatutActualCommande(int IDCommande);
-	
+
 	public abstract ResultSet selectAllCategories();
-	
-	// Actions sur les produits et les commandes 
+
+	// Actions sur les produits et les commandes
 	public abstract void insertProductInACommand(Produit p, int IDCommande);
 
 	public abstract void updateProductInACommand(Produit p, int IDCommande, boolean add);
-	
+
 	public abstract void deleteProductInACommand(Produit p, int IDCommande);
-	
+
 	public abstract void endCommandAndCreateANewOne(int IDCommande);
-	
+
 	// Changement de la vue accueil à la vue produit et vice-versa
 	public abstract void GoVueProduit(Produit p, AbstractControler controler);
-	
-	public abstract void GoVueAccueil(AbstractControler controler, String categorie);
+
+	public abstract void GoVueAccueil(AbstractControler controler, String categorie, boolean first,
+			String rechercheTextuelle);
 
 	// Implementation du pattern observer
 	public void addObserver(Observer obs) {

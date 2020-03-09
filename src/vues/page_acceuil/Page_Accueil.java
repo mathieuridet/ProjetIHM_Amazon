@@ -15,9 +15,12 @@ import javafx.scene.layout.RowConstraints;
 public class Page_Accueil extends GridPane {
 
 	private Barre_menu_gauche menu_gauche;
+	private HBox contenant_central;
 	private Contenu_accueil contenu;
+	private Menu_droit menu_droit;
 
-	public Page_Accueil(AbstractControler controler, String categorie) throws SQLException {
+	public Page_Accueil(AbstractControler controler, String categorie, boolean chosen, String rechercheTextuelle)
+			throws SQLException {
 		// this.setGridLinesVisible(true);
 
 		// -------------------------------------------------------------------------------
@@ -73,16 +76,16 @@ public class Page_Accueil extends GridPane {
 		// -------------------------------------------------------------------------------
 		// Partie relative au centre de la page
 		// -------------------------------------------------------------------------------
-		this.contenu = new Contenu_accueil(controler, categorie);
+		this.contenu = new Contenu_accueil(controler, categorie, chosen, rechercheTextuelle);
 
 		// Partie menu de droite
-		Menu_droit menu_droit = new Menu_droit(menu_haut);
-		menu_droit.setVisible(false);
-		menu_droit.setManaged(false);
+		this.menu_droit = new Menu_droit(menu_haut);
+		this.menu_droit.setVisible(false);
+		this.menu_droit.setManaged(false);
 
 		// Contenant des 2 éléments précédents
-		HBox contenant_central = new HBox();
-		contenant_central.getChildren().addAll(this.contenu, menu_droit);
+		this.contenant_central = new HBox();
+		this.contenant_central.getChildren().addAll(this.contenu, this.menu_droit);
 
 		// -------------------------------------------------------------------------------
 		// On ajoute les éléments dans les bonnes cases du GridPane
@@ -91,7 +94,7 @@ public class Page_Accueil extends GridPane {
 		this.add(coin_panier, 0, 0);
 		this.add(menu_haut, 1, 0);
 		this.add(this.menu_gauche, 0, 1);
-		this.add(contenant_central, 1, 1);
+		this.add(this.contenant_central, 1, 1);
 	}
 
 	public Barre_menu_gauche getMenu_gauche() {

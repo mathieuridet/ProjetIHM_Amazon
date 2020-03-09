@@ -15,7 +15,7 @@ public class Fenetre implements Observer {
 
 	public Fenetre(AbstractControler controler) {
 		try {
-			Page_Accueil accueil = new Page_Accueil(controler, "");
+			Page_Accueil accueil = new Page_Accueil(controler, "", true, "");
 			update(accueil);
 		} catch (SQLException e) {
 			e.printStackTrace();
