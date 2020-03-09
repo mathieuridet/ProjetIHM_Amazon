@@ -164,9 +164,9 @@ public class Model extends AbstractModel {
 	}
 
 	@Override
-	public void GoVueAccueil(AbstractControler controler, String categorie, boolean chosen, String rechercheTextuelle) {
+	public void GoVueAccueil(AbstractControler controler, String categorie, boolean first, String rechercheTextuelle) {
 		try {
-			this.notifyObserver(new Page_Accueil(controler, categorie, chosen, rechercheTextuelle));
+			this.notifyObserver(new Page_Accueil(controler, categorie, first, rechercheTextuelle));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

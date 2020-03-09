@@ -52,7 +52,7 @@ public abstract class AbstractModel implements Observable {
 	// Changement de la vue accueil à la vue produit et vice-versa
 	public abstract void GoVueProduit(Produit p, AbstractControler controler);
 
-	public abstract void GoVueAccueil(AbstractControler controler, String categorie, boolean chosen,
+	public abstract void GoVueAccueil(AbstractControler controler, String categorie, boolean first,
 			String rechercheTextuelle);
 
 	// Implementation du pattern observer

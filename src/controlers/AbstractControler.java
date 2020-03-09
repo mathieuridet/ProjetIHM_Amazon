@@ -123,8 +123,8 @@ public abstract class AbstractControler {
 		this.model.GoVueAccueil(this, categorie, true, "");
 	}
 
-	public void GoPageAccueil(String categorie, boolean chosen, String rechercheTextuelle) {
-		this.model.GoVueAccueil(this, categorie, chosen, rechercheTextuelle);
+	public void GoPageAccueil(String categorie, boolean first, String rechercheTextuelle) {
+		this.model.GoVueAccueil(this, categorie, first, rechercheTextuelle);
 	}
 
 	public boolean isAjoutPanier() {

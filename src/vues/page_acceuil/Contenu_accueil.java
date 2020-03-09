@@ -3,12 +3,12 @@ package vues.page_acceuil;
 import amazon_projet.Recup_image;
 import controlers.AbstractControler;
 import java.sql.SQLException;
-import java.util.Random;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
@@ -22,17 +22,17 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.TextAlignment;
 import vues.communs.Liste_produit;
 
 public class Contenu_accueil extends VBox {
 
-	private String chosenCategorie = "";
 	private Liste_produit selections;
 	private Liste_produit propositions;
 	private TextField recherche_textuelle;
 	private Button loupe;
 
-	public Contenu_accueil(AbstractControler controler, String categorie, boolean chosen, String rechercheTextuelle)
+	public Contenu_accueil(AbstractControler controler, String categorie, boolean first, String rechercheTextuelle)
 			throws SQLException {
 		this.setAlignment(Pos.TOP_CENTER);
 		this.setPadding(new Insets(10));
@@ -82,7 +82,7 @@ public class Contenu_accueil extends VBox {
 		this.loupe.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				controler.GoPageAccueil(categorie, chosen, recherche_textuelle.getText());
+				controler.GoPageAccueil(categorie, first, recherche_textuelle.getText());
 			}
 		});
 
@@ -96,26 +96,30 @@ public class Contenu_accueil extends VBox {
 		Contenu_accueil.setMargin(barre_du_milieu, new Insets(15, 0, 0, 0));
 
 		// -------------------------------------------------------------------------------
-		this.chosenCategorie = categorie;
-
-		if (this.chosenCategorie.equals("")) {
-			// On génère aléatoirement une catégorie pour afficher des produits différents
-			Random rand = new Random();
-			int randomIndex = rand.nextInt(controler.getCategories().size());
-			this.chosenCategorie = controler.getCategories().get(randomIndex);
-		}
-
-		// -------------------------------------------------------------------------------
 		// Partie produits
-		this.selections = new Liste_produit(75, 20, controler, this.chosenCategorie, chosen, rechercheTextuelle);
+		Label liste1 = new Label();
+		if (controler.isSelectionCategorie())
+			liste1.setText("Résultat(s) :");
+		else
+			liste1.setText("Découvrez nos produits :");
+		liste1.setFont(Font.font("Comic sans MS", FontWeight.NORMAL, 15));
+		liste1.setTextAlignment(TextAlignment.LEFT);
+		liste1.setAlignment(Pos.CENTER_LEFT);
+
+		this.selections = new Liste_produit(75, 20, controler, categorie, first, rechercheTextuelle);
 		Contenu_accueil.setMargin(this.selections, new Insets(15, 0, 0, 0));
 		VBox.setVgrow(this.selections, Priority.ALWAYS);
 
-		this.propositions = new Liste_produit(75, 20, controler, this.chosenCategorie, !chosen, rechercheTextuelle);
+		Label liste2 = new Label("Découvrez nos produits :");
+		liste2.setFont(Font.font("Comic sans MS", FontWeight.NORMAL, 15));
+		liste2.setTextAlignment(TextAlignment.LEFT);
+		liste2.setAlignment(Pos.CENTER_LEFT);
+
+		this.propositions = new Liste_produit(75, 20, controler, categorie, !first, rechercheTextuelle);
 		Contenu_accueil.setMargin(this.propositions, new Insets(15, 0, 0, 0));
 		VBox.setVgrow(this.propositions, Priority.ALWAYS);
 
-		this.getChildren().addAll(this.selections, this.propositions);
+		this.getChildren().addAll(liste1, this.selections, liste2, this.propositions);
 
 		this.setPrefWidth(1500);
 	}

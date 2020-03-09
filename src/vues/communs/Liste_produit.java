@@ -4,6 +4,7 @@ import controlers.AbstractControler;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -23,7 +24,7 @@ public class Liste_produit extends ScrollPane {
 
 	private List<Produit> produits = new ArrayList<Produit>();
 
-	public Liste_produit(int imgSize, int space, AbstractControler controler, String categorie, boolean chosen,
+	public Liste_produit(int imgSize, int space, AbstractControler controler, String categorie, boolean first,
 			String rechercheTextuelle) throws SQLException {
 		RowConstraints row = new RowConstraints();
 		row.setPrefHeight(100);
@@ -36,27 +37,29 @@ public class Liste_produit extends ScrollPane {
 		productList.setPadding(new Insets(20));
 		// productList.setGridLinesVisible(true);
 
-		if (controler.isSelectionCategorie() && chosen) {
-			for (Produit prod : controler.getProductsByCategory(categorie)) {
-				this.produits.add(prod);
-			}
+		List<Produit> tousLesArticles = new ArrayList<Produit>();
+		for (String cat : controler.getCategories()) {
+			tousLesArticles.addAll(controler.getProductsByCategory(cat));
+		}
+		Random random = new Random();
 
-		} else if ((controler.isSelectionCategorie() && !chosen)) {
-			for (String cat : controler.getCategories()) {
-				if (!cat.equals(categorie)) {
-					this.produits.addAll(controler.getProductsByCategory(cat));
+		if (controler.isSelectionCategorie()) {
+			if (first) {
+				for (Produit prod : controler.getProductsByCategory(categorie)) {
+					this.produits.add(prod);
+				}
+
+			} else {
+				for (Produit prod : tousLesArticles) {
+					int aleatoire = random.nextInt(this.produits.size() + 1);
+					if (!prod.getCategorieProduct().equals(categorie))
+						this.produits.add(aleatoire, prod);
 				}
 			}
-		} else if (!controler.isSelectionCategorie() && chosen) {
-			for (Produit prod : controler.getProductsByCategory(categorie)) {
-				this.produits.add(prod);
-			}
-
-		} else if ((!controler.isSelectionCategorie() && !chosen)) {
-			for (String cat : controler.getCategories()) {
-				if (!cat.equals(categorie)) {
-					this.produits.addAll(controler.getProductsByCategory(cat));
-				}
+		} else {
+			for (Produit prod : tousLesArticles) {
+				int aleatoire = random.nextInt(this.produits.size() + 1);
+				this.produits.add(aleatoire, prod);
 			}
 		}
 
