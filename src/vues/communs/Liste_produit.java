@@ -23,8 +23,8 @@ public class Liste_produit extends ScrollPane {
 
 	private List<Produit> produits = new ArrayList<Produit>();
 
-	public Liste_produit(int imgSize, int space, AbstractControler controler, String categorie, boolean chosen)
-			throws SQLException {
+	public Liste_produit(int imgSize, int space, AbstractControler controler, String categorie, boolean chosen,
+			String rechercheTextuelle) throws SQLException {
 		RowConstraints row = new RowConstraints();
 		row.setPrefHeight(100);
 		row.setVgrow(Priority.ALWAYS);
@@ -36,10 +36,23 @@ public class Liste_produit extends ScrollPane {
 		productList.setPadding(new Insets(20));
 		// productList.setGridLinesVisible(true);
 
-		if (chosen) {
-			// On récupère les articles appartenant à la catégorie spécifiée
-			this.produits = controler.getProductsByCategory(categorie);
-		} else {
+		if (controler.isSelectionCategorie() && chosen) {
+			for (Produit prod : controler.getProductsByCategory(categorie)) {
+				this.produits.add(prod);
+			}
+
+		} else if ((controler.isSelectionCategorie() && !chosen)) {
+			for (String cat : controler.getCategories()) {
+				if (!cat.equals(categorie)) {
+					this.produits.addAll(controler.getProductsByCategory(cat));
+				}
+			}
+		} else if (!controler.isSelectionCategorie() && chosen) {
+			for (Produit prod : controler.getProductsByCategory(categorie)) {
+				this.produits.add(prod);
+			}
+
+		} else if ((!controler.isSelectionCategorie() && !chosen)) {
 			for (String cat : controler.getCategories()) {
 				if (!cat.equals(categorie)) {
 					this.produits.addAll(controler.getProductsByCategory(cat));
@@ -66,14 +79,7 @@ public class Liste_produit extends ScrollPane {
 			productList.add(produit, i, 0);
 			i++;
 		}
-		/*
-		 * for (int i = 0; i < 18; i++) { productList.getColumnConstraints().add(new
-		 * ColumnConstraints(200)); Produit produitn = new
-		 * Produit("img/img_product1.png", "Article " + n, "19.99€",
-		 * "Description article " + n); produitn.getImView().setFitHeight(imgSize);
-		 * produitn.getImView().setFitWidth(imgSize); productList.add(produitn, i, 0);
-		 * n++; }
-		 */
+
 		HBox.setHgrow(productList, Priority.ALWAYS);
 
 		// Pour parcourir les produits
@@ -84,6 +90,12 @@ public class Liste_produit extends ScrollPane {
 		this.setFitToWidth(true);
 		this.setBackground(new Background(new BackgroundFill(null, new CornerRadii(10), Insets.EMPTY)));
 	}
+
+	// -----------------------------------------------------------------------------------------------------------
+	// Ci-dessus le constructeur pour les listes de la page d'accueil
+	// -----------------------------------------------------------------------------------------------------------
+	// Ci-dessous le constructeur pour les listes de la page produit
+	// -----------------------------------------------------------------------------------------------------------
 
 	public Liste_produit(int imgSize, int space, int titleSize, int priceSize, int textSize,
 			AbstractControler controler, Produit prod) throws SQLException {
