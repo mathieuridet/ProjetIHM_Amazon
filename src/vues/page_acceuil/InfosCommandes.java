@@ -52,9 +52,11 @@ public class InfosCommandes extends VBox {
 						if (qteProd == 1) {
 							controler.setMajFromPanier(true);
 							controler.setRemoveProdFromPanier(true, prod);
+							controler.GoPageAccueil("");
 						} else {
 							controler.setMajFromPanier(true);
 							controler.setAjoutPanier(false, prod);
+							controler.GoPageAccueil("");
 						}
 					}
 				});
@@ -67,6 +69,7 @@ public class InfosCommandes extends VBox {
 					public void handle(MouseEvent me) {
 						controler.setMajFromPanier(true);
 						controler.setAjoutPanier(true, prod);
+						controler.GoPageAccueil("");
 					}
 				});
 

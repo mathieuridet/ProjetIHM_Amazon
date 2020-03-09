@@ -29,7 +29,7 @@ import javafx.scene.text.TextAlignment;
 public class Vue_produit extends GridPane {
 
 	private Button addProduct = new Button();
-	private Button notAddProduct = new Button();
+	private Button retourAccueil = new Button();
 
 	public Vue_produit(Produit prod) {
 		// Partie relative aux principales informations et visuels du produit
@@ -53,25 +53,25 @@ public class Vue_produit extends GridPane {
 
 		// -------------------------------------------------------------------------------
 		// 1ère partie en partant de la gauche
-		this.addProduct.setText("Je prends !");
+		this.retourAccueil.setText("Revenir en arrière");
+		this.retourAccueil.setFont(Font.font("Comic sans MS", FontWeight.NORMAL, 15));
+		this.retourAccueil.setGraphic(new ImageView(new Recup_image("img/flecheRetour.png").getImg()));
+		this.retourAccueil.setContentDisplay(ContentDisplay.TOP);
+		this.retourAccueil.setBackground(Background.EMPTY);
+
+		this.addProduct.setText("Ajouter au panier");
 		this.addProduct.setFont(Font.font("Comic sans MS", FontWeight.NORMAL, 15));
-		this.addProduct.setGraphic(new ImageView(new Recup_image("img/plus.png").getImg()));
+		this.addProduct.setGraphic(new ImageView(new Recup_image("img/ajoutPanier.png").getImg()));
 		this.addProduct.setContentDisplay(ContentDisplay.TOP);
 		this.addProduct.setBackground(Background.EMPTY);
 
-		this.notAddProduct.setText("Non merci.");
-		this.notAddProduct.setFont(Font.font("Comic sans MS", FontWeight.NORMAL, 15));
-		this.notAddProduct.setGraphic(new ImageView(new Recup_image("img/croix.png").getImg()));
-		this.notAddProduct.setContentDisplay(ContentDisplay.TOP);
-		this.notAddProduct.setBackground(Background.EMPTY);
-
 		HBox conteneur_boutons = new HBox();
+		HBox.setHgrow(this.retourAccueil, Priority.ALWAYS);
 		HBox.setHgrow(this.addProduct, Priority.ALWAYS);
-		HBox.setHgrow(this.notAddProduct, Priority.ALWAYS);
 		conteneur_boutons.setAlignment(Pos.TOP_CENTER);
+		HBox.setMargin(this.retourAccueil, new Insets(5, 30, 5, 30));
 		HBox.setMargin(this.addProduct, new Insets(5, 30, 5, 30));
-		HBox.setMargin(this.notAddProduct, new Insets(5, 30, 5, 30));
-		conteneur_boutons.getChildren().addAll(this.addProduct, this.notAddProduct);
+		conteneur_boutons.getChildren().addAll(this.retourAccueil, this.addProduct);
 
 		Label choix_options = new Label("Choix des options");
 		choix_options
@@ -157,8 +157,7 @@ public class Vue_produit extends GridPane {
 		return addProduct;
 	}
 
-	public Button getNotAddProduct() {
-		return notAddProduct;
+	public Button getRetourAccueil() {
+		return retourAccueil;
 	}
-
 }
