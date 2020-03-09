@@ -13,7 +13,7 @@ public class Barre_menu_haut extends GridPane {
 
 	private Composant_menu_haut tirets_droite = new Composant_menu_haut("   ", "img/img_menuderoulantdroite.png",
 			ContentDisplay.LEFT, HPos.RIGHT);;
-			
+
 	private ImageView logoAmazon;
 
 	public Barre_menu_haut() {
@@ -35,12 +35,9 @@ public class Barre_menu_haut extends GridPane {
 		column3.setPercentWidth(25);
 		ColumnConstraints column4 = new ColumnConstraints();
 		column4.setPercentWidth(5);
-//		ColumnConstraints column5 = new ColumnConstraints();
-//		column5.setPercentWidth(20);
 		this.getColumnConstraints().addAll(column1, column2, column3, column4);
 
 		// On crée nos différents composants du menu
-
 		Composant_menu_haut mon_compte = new Composant_menu_haut(" Mon Compte", "img/img_moncompte.png",
 				ContentDisplay.LEFT, HPos.CENTER);
 
@@ -59,7 +56,6 @@ public class Barre_menu_haut extends GridPane {
 		// variable de classe
 
 		// On attache tous les composants au conteneur du haut
-		// this.getChildren().addAll(mon_compte, panier, img_logo);
 		this.add(mon_compte, 0, 0);
 //		this.add(panier, 1, 0);
 		this.add(this.logoAmazon, 1, 0);
@@ -67,10 +63,7 @@ public class Barre_menu_haut extends GridPane {
 		this.add(this.tirets_droite, 3, 0);
 		// this.setGridLinesVisible(true);
 
-		// this.setMaxHeight(Double.MAX_VALUE);
-		// this.setMaxWidth(Double.MAX_VALUE);
 		this.setStyle("-fx-background-color: #183152;");
-
 	}
 
 	public Composant_menu_haut getTirets_droite() {

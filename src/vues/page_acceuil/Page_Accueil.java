@@ -104,10 +104,4 @@ public class Page_Accueil extends GridPane {
 	public Contenu_accueil getContenu() {
 		return contenu;
 	}
-
-	/*
-	 * class OperateurListener implements ActionListener{ public void
-	 * actionPerformed(ActionEvent e) {
-	 * controler.setOperateur(((JButton)e.getSource()).getText()); } }
-	 */
 }

@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlers;
 
 import Model.AbstractModel;
 import Model.BD_Amazon;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,10 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import vues.communs.Produit;
 
-/**
- *
- * @author mathieuridet
- */
 public abstract class AbstractControler {
 
 	protected AbstractModel model;
@@ -119,8 +109,8 @@ public abstract class AbstractControler {
 		this.model.GoVueProduit(p, this);
 	}
 
-	public void GoPageAccueil(String categorie) {
-		this.model.GoVueAccueil(this, categorie, true, "");
+	public void GoPageAccueil() {
+		this.model.GoVueAccueil(this, "", true, "");
 	}
 
 	public void GoPageAccueil(String categorie, boolean first, String rechercheTextuelle) {
@@ -160,7 +150,7 @@ public abstract class AbstractControler {
 	public List<String> getCategories() {
 		return categories;
 	}
-	
+
 	public boolean isSelectionCategorie() {
 		return selectionCategorie;
 	}

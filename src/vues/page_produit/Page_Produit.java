@@ -47,7 +47,7 @@ public class Page_Produit extends GridPane {
 			public void handle(MouseEvent me) {
 				controler.setMajFromPanier(true);
 				controler.setSelectionCategorie(false);
-				controler.GoPageAccueil("");
+				controler.GoPageAccueil();
 			}
 		});
 
@@ -61,7 +61,7 @@ public class Page_Produit extends GridPane {
 			public void handle(MouseEvent me) {
 				controler.setMajFromPanier(false);
 				controler.setSelectionCategorie(false);
-				controler.GoPageAccueil("");
+				controler.GoPageAccueil();
 			}
 		});
 
@@ -93,7 +93,7 @@ public class Page_Produit extends GridPane {
 		productView.getRetourAccueil().setOnMousePressed(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent me) {
 				controler.setSelectionCategorie(false);
-				controler.GoPageAccueil("");
+				controler.GoPageAccueil();
 			}
 		});
 		productView.getAddProduct().setOnMousePressed(new EventHandler<MouseEvent>() {
@@ -101,7 +101,7 @@ public class Page_Produit extends GridPane {
 				controler.setMajFromPanier(false);
 				controler.setAjoutPanier(true, prod);
 				controler.setSelectionCategorie(false);
-				controler.GoPageAccueil("");
+				controler.GoPageAccueil();
 			}
 		});
 

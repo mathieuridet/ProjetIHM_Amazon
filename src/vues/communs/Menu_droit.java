@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vues.communs;
 
 import amazon_projet.Recup_image;
@@ -19,10 +14,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-/**
- *
- * @author daekc
- */
 public class Menu_droit extends GridPane {
 
 	private boolean menu_droite_visible = false;
@@ -56,7 +47,7 @@ public class Menu_droit extends GridPane {
 		this.setPadding(new Insets(20, 0, 0, 0));
 		this.setVgap(10);
 		// this.setGridLinesVisible(true);
-		
+
 		// Event pour faire apparaître et disparaître le menu de droite
 		topMenu.getTirets_droite().setOnMousePressed(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent me) {
