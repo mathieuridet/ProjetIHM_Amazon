@@ -110,15 +110,15 @@ public abstract class AbstractControler {
 	public void commandeTerminee() throws SQLException {
 		this.model.endCommandAndCreateANewOne(this.idCommande);
 		this.idCommande = getIdCommandeEnCours();
-		this.model.GoVueAccueil(this);
+		this.model.GoVueAccueil(this, "");
 	}
 
 	public void GoPageProduit(Produit p) {
 		this.model.GoVueProduit(p, this);
 	}
 
-	public void GoPageAccueil() {
-		this.model.GoVueAccueil(this);
+	public void GoPageAccueil(String categorie) {
+		this.model.GoVueAccueil(this, categorie);
 	}
 
 	public boolean isAjoutPanier() {

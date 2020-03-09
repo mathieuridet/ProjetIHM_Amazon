@@ -164,9 +164,9 @@ public class Model extends AbstractModel {
 	}
 
 	@Override
-	public void GoVueAccueil(AbstractControler controler) {
+	public void GoVueAccueil(AbstractControler controler, String categorie) {
 		try {
-			this.notifyObserver(new Page_Accueil(controler));
+			this.notifyObserver(new Page_Accueil(controler, categorie));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

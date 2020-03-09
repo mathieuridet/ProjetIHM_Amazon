@@ -37,6 +37,7 @@ public class Controler extends AbstractControler {
 				}
 				if (!update)
 					this.model.insertProductInACommand(p, this.idCommande);
+				this.ajoutPanier = false;
 
 			} else if (isRemoveProdFromPanier()) {
 
@@ -53,9 +54,7 @@ public class Controler extends AbstractControler {
 					}
 				}
 			}
-			
-			GoPageAccueil();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

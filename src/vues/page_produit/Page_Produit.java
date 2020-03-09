@@ -46,7 +46,7 @@ public class Page_Produit extends GridPane {
 		coin_panier.setOnMousePressed(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent me) {
 				controler.setMajFromPanier(true);
-				controler.GoPageAccueil();
+				controler.GoPageAccueil("");
 			}
 		});
 
@@ -59,7 +59,7 @@ public class Page_Produit extends GridPane {
 		menu_haut.getLogoAmazon().setOnMousePressed(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent me) {
 				controler.setMajFromPanier(false);
-				controler.GoPageAccueil();
+				controler.GoPageAccueil("");
 			}
 		});
 
@@ -88,15 +88,16 @@ public class Page_Produit extends GridPane {
 		Vue_produit productView = new Vue_produit(prod);
 		infos_produit.add(productView, 0, 0);
 
+		productView.getRetourAccueil().setOnMousePressed(new EventHandler<MouseEvent>() {
+			public void handle(MouseEvent me) {
+				controler.GoPageAccueil("");
+			}
+		});
 		productView.getAddProduct().setOnMousePressed(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent me) {
 				controler.setMajFromPanier(false);
 				controler.setAjoutPanier(true, prod);
-			}
-		});
-		productView.getNotAddProduct().setOnMousePressed(new EventHandler<MouseEvent>() {
-			public void handle(MouseEvent me) {
-				controler.GoPageAccueil();
+				controler.GoPageAccueil("");
 			}
 		});
 
