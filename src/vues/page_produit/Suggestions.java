@@ -1,7 +1,6 @@
 package vues.page_produit;
 
 import java.sql.SQLException;
-
 import controlers.AbstractControler;
 import vues.communs.Liste_produit;
 import vues.communs.Produit;

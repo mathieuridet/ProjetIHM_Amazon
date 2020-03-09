@@ -53,12 +53,12 @@ public class InfosCommandes extends VBox {
 							controler.setMajFromPanier(true);
 							controler.setRemoveProdFromPanier(true, prod);
 							controler.setSelectionCategorie(false);
-							controler.GoPageAccueil("");
+							controler.GoPageAccueil();
 						} else {
 							controler.setMajFromPanier(true);
 							controler.setAjoutPanier(false, prod);
 							controler.setSelectionCategorie(false);
-							controler.GoPageAccueil("");
+							controler.GoPageAccueil();
 						}
 					}
 				});
@@ -72,7 +72,7 @@ public class InfosCommandes extends VBox {
 						controler.setMajFromPanier(true);
 						controler.setAjoutPanier(true, prod);
 						controler.setSelectionCategorie(false);
-						controler.GoPageAccueil("");
+						controler.GoPageAccueil();
 					}
 				});
 

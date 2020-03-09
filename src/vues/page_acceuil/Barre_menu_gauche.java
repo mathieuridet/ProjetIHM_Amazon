@@ -19,10 +19,6 @@ public class Barre_menu_gauche extends BorderPane {
 	private InfosCommandes informations;
 
 	public Barre_menu_gauche(AbstractControler controler) throws SQLException {
-		// menu_gauche.maxHeight(scene.getHeight());
-		// menu_gauche.minHeight(scene.getHeight());
-		// menu_haut.setTranslateX(menu_gauche.getWidth());
-
 		// On récupère les articles constituant la commande d'ID 1 dans la BD
 		List<Produit> produits = controler.getProductsByCommand(controler.getIdCommande());
 		for (Produit prod : produits) {

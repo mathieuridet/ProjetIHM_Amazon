@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vues.communs;
 
 import amazon_projet.Recup_image;
@@ -17,10 +12,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.TextAlignment;
 
-/**
- *
- * @author daekc
- */
 public class Produit extends VBox {
 
 	private int idProduct;
