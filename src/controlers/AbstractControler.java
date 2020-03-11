@@ -21,6 +21,7 @@ public abstract class AbstractControler {
 	protected int idCommande = 0;
 	protected List<String> categories = new ArrayList<String>();
 	private boolean selectionCategorie;
+	private boolean selectionTextuelle;
 
 	public AbstractControler(AbstractModel model) throws SQLException {
 		this.model = model;
@@ -34,6 +35,7 @@ public abstract class AbstractControler {
 		pstmt.setDate(1, java.sql.Date.valueOf((LocalDate.now()).plusDays(3)));
 		pstmt.execute();
 		this.selectionCategorie = false;
+		this.selectionTextuelle = false;
 	}
 
 	public List<Produit> getProductsByCommand(int idCommande) throws SQLException {
@@ -102,6 +104,8 @@ public abstract class AbstractControler {
 	public void commandeTerminee() throws SQLException {
 		this.model.endCommandAndCreateANewOne(this.idCommande);
 		this.idCommande = getIdCommandeEnCours();
+		this.setSelectionCategorie(false);
+		this.setSelectionTextuelle(false);
 		this.model.GoVueAccueil(this, "", true, "");
 	}
 
@@ -110,10 +114,16 @@ public abstract class AbstractControler {
 	}
 
 	public void GoPageAccueil() {
+		this.setSelectionCategorie(false);
+		this.setSelectionTextuelle(false);
 		this.model.GoVueAccueil(this, "", true, "");
 	}
 
 	public void GoPageAccueil(String categorie, boolean first, String rechercheTextuelle) {
+		if (!categorie.equals(""))
+			this.setSelectionCategorie(true);
+		if (!rechercheTextuelle.equals(""))
+			this.setSelectionTextuelle(true);
 		this.model.GoVueAccueil(this, categorie, first, rechercheTextuelle);
 	}
 
@@ -159,7 +169,14 @@ public abstract class AbstractControler {
 		this.selectionCategorie = selectionCategorie;
 	}
 
+	public boolean isSelectionTextuelle() {
+		return selectionTextuelle;
+	}
+
+	public void setSelectionTextuelle(boolean selectionTextuelle) {
+		this.selectionTextuelle = selectionTextuelle;
+	}
+
 	// Méthode de contrôle
 	abstract void control(Produit p);
-
 }

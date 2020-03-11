@@ -52,12 +52,10 @@ public class InfosCommandes extends VBox {
 						if (qteProd == 1) {
 							controler.setMajFromPanier(true);
 							controler.setRemoveProdFromPanier(true, prod);
-							controler.setSelectionCategorie(false);
 							controler.GoPageAccueil();
 						} else {
 							controler.setMajFromPanier(true);
 							controler.setAjoutPanier(false, prod);
-							controler.setSelectionCategorie(false);
 							controler.GoPageAccueil();
 						}
 					}
@@ -71,7 +69,6 @@ public class InfosCommandes extends VBox {
 					public void handle(MouseEvent me) {
 						controler.setMajFromPanier(true);
 						controler.setAjoutPanier(true, prod);
-						controler.setSelectionCategorie(false);
 						controler.GoPageAccueil();
 					}
 				});
@@ -118,7 +115,6 @@ public class InfosCommandes extends VBox {
 			passer_commande.setOnMousePressed(new EventHandler<MouseEvent>() {
 				public void handle(MouseEvent me) {
 					try {
-						controler.setSelectionCategorie(false);
 						controler.commandeTerminee();
 					} catch (SQLException e) {
 						e.printStackTrace();

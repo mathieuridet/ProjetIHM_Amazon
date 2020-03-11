@@ -47,7 +47,7 @@ public class Liste_produit extends ScrollPane {
 		Random random = new Random();
 
 		// En fonction des différents cas on configure notre liste déroulante différemment 
-		if (rechercheTextuelle.equals("")) {
+		if (!controler.isSelectionTextuelle()) {
 			if (controler.isSelectionCategorie()) {
 				if (first) {
 					for (Produit prod : controler.getProductsByCategory(categorie)) {
