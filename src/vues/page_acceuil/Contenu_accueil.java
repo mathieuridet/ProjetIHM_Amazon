@@ -63,14 +63,13 @@ public class Contenu_accueil extends VBox {
 		resetButton.setBackground(Background.EMPTY);
 		resetButton.setOnMousePressed(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent me) {
-				controler.setSelectionCategorie(false);
 				controler.GoPageAccueil();
 			}
 		});
 
 		barre_du_milieu.getChildren().add(resetButton);
 
-		if (!controler.isSelectionCategorie() && rechercheTextuelle.equals("")) {
+		if (!controler.isSelectionCategorie() && !controler.isSelectionTextuelle()) {
 			resetButton.setVisible(false);
 			resetButton.setManaged(false);
 		} else {
@@ -89,8 +88,7 @@ public class Contenu_accueil extends VBox {
 			mi.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent event) {
-					controler.setSelectionCategorie(true);
-					controler.GoPageAccueil(cat, true, "");
+					controler.GoPageAccueil(cat, true, rechercheTextuelle);
 				}
 			});
 			toutes_nos_categories.getItems().add(mi);
@@ -132,8 +130,12 @@ public class Contenu_accueil extends VBox {
 		// -------------------------------------------------------------------------------
 		// Partie produits
 		Label liste1 = new Label();
-		if (controler.isSelectionCategorie())
-			liste1.setText("> Résultat de la recherche :");
+		if (controler.isSelectionCategorie() & !controler.isSelectionTextuelle())
+			liste1.setText("> Résultat de : \t catégorie = " + categorie);
+		else if (!controler.isSelectionCategorie() & controler.isSelectionTextuelle())
+			liste1.setText("> Résultat de : \t recherche = " + rechercheTextuelle);
+		else if (controler.isSelectionCategorie() & controler.isSelectionTextuelle())
+			liste1.setText("> Résultat de : \t catégorie = " + categorie + ", \t recherche = " + rechercheTextuelle);
 		else
 			liste1.setText("> Découvrez nos produits :");
 		liste1.setFont(Font.font("Comic sans MS", FontWeight.NORMAL, 18));
