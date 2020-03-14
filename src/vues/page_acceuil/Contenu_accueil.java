@@ -42,7 +42,7 @@ public class Contenu_accueil extends VBox {
 		this.setPadding(new Insets(10));
 		// -------------------------------------------------------------------------------
 		// Pub
-		Recup_image recup = new Recup_image("img/img_pub.png");
+		Recup_image recup = new Recup_image("img/img_newpub.png");
 		ImageView imgview_pub = new ImageView(recup.getImg());
 
 		HBox box_pub = new HBox();

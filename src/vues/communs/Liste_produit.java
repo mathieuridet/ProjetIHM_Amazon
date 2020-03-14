@@ -46,7 +46,8 @@ public class Liste_produit extends ScrollPane {
 		}
 		Random random = new Random();
 
-		// En fonction des différents cas on configure notre liste déroulante différemment 
+		// En fonction des différents cas on configure notre liste déroulante
+		// différemment
 		if (!controler.isSelectionTextuelle()) {
 			if (controler.isSelectionCategorie()) {
 				if (first) {
@@ -70,7 +71,8 @@ public class Liste_produit extends ScrollPane {
 			if (controler.isSelectionCategorie()) {
 				if (first) {
 					for (Produit prod : controler.getProductsByCategory(categorie)) {
-						if (prod.getArticle().getText().toLowerCase().contains(rechercheTextuelle.toLowerCase()))
+						if (prod.getArticle().getText().toLowerCase().contains(rechercheTextuelle.toLowerCase()) || prod
+								.getDescription().getText().toLowerCase().contains(rechercheTextuelle.toLowerCase()))
 							this.produits.add(prod);
 					}
 				} else {
@@ -84,7 +86,8 @@ public class Liste_produit extends ScrollPane {
 				if (first) {
 					for (Produit prod : tousLesArticles) {
 						int aleatoire = random.nextInt(this.produits.size() + 1);
-						if (prod.getArticle().getText().toLowerCase().contains(rechercheTextuelle.toLowerCase()))
+						if (prod.getArticle().getText().toLowerCase().contains(rechercheTextuelle.toLowerCase()) || prod
+								.getDescription().getText().toLowerCase().contains(rechercheTextuelle.toLowerCase()))
 							this.produits.add(aleatoire, prod);
 					}
 				} else {
