@@ -1,6 +1,8 @@
 package vues.communs;
 
 import amazon_projet.Recup_image;
+import controlers.AbstractControler;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.image.ImageView;
@@ -18,8 +20,11 @@ public class Menu_droit extends GridPane {
 
 	private boolean menu_droite_visible = false;
 
-	public Menu_droit(Barre_menu_haut topMenu) {
-		String[] cats = {"Sport","Mode", "Multimédia", "Amazon Prime Video", "Amazon Fire TV", "Ebook et Kindle", "Amazon Music", "Echo et Alexa", "Amazon Fire TV", "Liceuse Kindle", "Tablette Fire", "Appstore pour Android", "Musique, Film et Jeux Vidéo", "Hight-Tech, Informatique, Bureau", "Jouets, Enfants, Bébés", "Maison, Bricolage, Animalerie"};
+	public Menu_droit(Barre_menu_haut topMenu, AbstractControler controler, String rechercheTextuelle) {
+		String[] cats = { "Sport", "Mode", "Multimedia", "Amazon Prime Video", "Amazon Fire TV", "Ebook et Kindle",
+				"Amazon Music", "Echo et Alexa", "Amazon Fire TV", "Liceuse Kindle", "Tablette Fire",
+				"Appstore pour Android", "Musique, Film et Jeux Vidéo", "Hight-Tech, Informatique, Bureau",
+				"Jouets, Enfants, Bébés", "Maison, Bricolage, Animalerie" };
 
 		// La somme des largeurs des 2 colonnes de la page fait 100%
 		ColumnConstraints column1 = new ColumnConstraints();
@@ -38,6 +43,24 @@ public class Menu_droit extends GridPane {
 			txt.setWrappingWidth(200);
 			GridPane.setMargin(txt, new Insets(8));
 			GridPane.setMargin(imageview, new Insets(8));
+			for (String cat : controler.getCategories()) {
+				if (cat.equals(cats[i])) {
+					txt.setOnMousePressed(new EventHandler<Event>() {
+						@Override
+						public void handle(Event arg0) {
+							controler.GoPageAccueil(cat, true, rechercheTextuelle);
+						}
+
+					});
+					imageview.setOnMousePressed(new EventHandler<Event>() {
+						@Override
+						public void handle(Event arg0) {
+							controler.GoPageAccueil(cat, true, rechercheTextuelle);
+						}
+
+					});
+				}
+			}
 			this.add(txt, 0, i);
 			this.add(imageview, 1, i);
 		}

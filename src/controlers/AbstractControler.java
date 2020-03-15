@@ -122,8 +122,12 @@ public abstract class AbstractControler {
 	public void GoPageAccueil(String categorie, boolean first, String rechercheTextuelle) {
 		if (!categorie.equals(""))
 			this.setSelectionCategorie(true);
+		else
+			this.setSelectionCategorie(false);
 		if (!rechercheTextuelle.equals(""))
 			this.setSelectionTextuelle(true);
+		else
+			this.setSelectionTextuelle(false);
 		this.model.GoVueAccueil(this, categorie, first, rechercheTextuelle);
 	}
 
