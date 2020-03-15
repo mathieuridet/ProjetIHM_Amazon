@@ -109,7 +109,7 @@ public class Page_Produit extends GridPane {
 		infos_produit.add(tech, 0, 3);
 
 		// Partie menu de droite
-		Menu_droit menu_droit = new Menu_droit(menu_haut);
+		Menu_droit menu_droit = new Menu_droit(menu_haut, controler, "");
 		menu_droit.setVisible(false);
 		menu_droit.setManaged(false);
 

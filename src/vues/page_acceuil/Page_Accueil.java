@@ -79,7 +79,7 @@ public class Page_Accueil extends GridPane {
 		this.contenu = new Contenu_accueil(controler, categorie, chosen, rechercheTextuelle);
 
 		// Partie menu de droite
-		this.menu_droit = new Menu_droit(menu_haut);
+		this.menu_droit = new Menu_droit(menu_haut, controler, rechercheTextuelle);
 		this.menu_droit.setVisible(false);
 		this.menu_droit.setManaged(false);
 
