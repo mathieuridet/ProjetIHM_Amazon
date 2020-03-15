@@ -19,7 +19,7 @@ public class Menu_droit extends GridPane {
 	private boolean menu_droite_visible = false;
 
 	public Menu_droit(Barre_menu_haut topMenu) {
-		String[] cats = { "Amazon Prime Video", "Amazon Fire TV", "Ebook et Kindle", "Amazon Music" };
+		String[] cats = {"Sport","Mode", "Multimédia", "Amazon Prime Video", "Amazon Fire TV", "Ebook et Kindle", "Amazon Music", "Echo et Alexa", "Amazon Fire TV", "Liceuse Kindle", "Tablette Fire", "Appstore pour Android", "Musique, Film et Jeux Vidéo", "Hight-Tech, Informatique, Bureau", "Jouets, Enfants, Bébés", "Maison, Bricolage, Animalerie"};
 
 		// La somme des largeurs des 2 colonnes de la page fait 100%
 		ColumnConstraints column1 = new ColumnConstraints();
